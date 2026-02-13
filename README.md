@@ -165,10 +165,10 @@ Replace the placeholder images with your actual photography:
    - Find each `<img>` tag
    - Replace the `src` attribute:
      ```html
-     <!-- Before -->
-     <img src="https://placehold.co/400x400/555/fff?text=Photo+1" alt="Photography 1">
+     <!-- Before (inline SVG placeholder) -->
+     <img src="data:image/svg+xml,..." alt="Photography 1">
      
-     <!-- After -->
+     <!-- After (your actual image) -->
      <img src="images/photo1.jpg" alt="Photography 1">
      ```
 

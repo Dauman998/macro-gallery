@@ -350,10 +350,6 @@ h1 {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-
-    .gallery-item {
-        border-width: 4px;
-    }
 }
 
 @media (max-width: 480px) {
