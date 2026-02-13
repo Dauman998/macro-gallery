@@ -1,11 +1,16 @@
 # 🎉 YOU'RE ALL SET! Here's What You Have Now
 
+## 📥 **NEW?** Get all guides on your Mac: See `GET-ALL-GUIDES.md`!
+(Shows exactly how to download everything from GitHub to your Mac)
+
 ## 🍎 **MAC USER?** Start with `MAC-GUIDE.md` first!
 (Shows Mac keyboard shortcuts: Cmd instead of Ctrl, TextEdit setup, etc.)
 
 ## 📚 Your Complete Guide Library
 
 I've created **everything you need** to edit your portfolio without any coding knowledge!
+
+**You have 15 guides total!** See `GET-ALL-GUIDES.md` for complete list and download instructions.
 
 ### Start Here → `BEGINNER-GUIDE.md`
 **Read this first!** (15 minutes)
