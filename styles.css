@@ -1,0 +1,372 @@
+/* 
+=============================================================================
+PHOTOGRAPHY PORTFOLIO - 12 STYLE COMBINATIONS
+=============================================================================
+
+HOW TO SWITCH STYLES:
+1. Find the "ACTIVE STYLE CONFIGURATION" section below
+2. Uncomment ONE of the 12 combinations (remove the /* and */)
+3. Make sure all other combinations are commented out
+4. Save the file and refresh your browser
+
+AVAILABLE COMBINATIONS:
+- Dark Charcoal + White Frames (DEFAULT - already active)
+- Dark Charcoal + Metallic Silver Frames
+- Dark Charcoal + Metallic Gold Frames
+- Dark Charcoal + Metallic Bronze Frames
+- Deep Navy + White Frames
+- Deep Navy + Metallic Silver Frames
+- Deep Navy + Metallic Gold Frames
+- Deep Navy + Metallic Bronze Frames
+- Warm Dark Brown + White Frames
+- Warm Dark Brown + Metallic Silver Frames
+- Warm Dark Brown + Metallic Gold Frames
+- Warm Dark Brown + Metallic Bronze Frames
+=============================================================================
+*/
+
+/* =============================================================================
+   ACTIVE STYLE CONFIGURATION
+   Uncomment ONE combination below (remove /* and */)
+   ============================================================================= */
+
+/* COMBINATION 1: Dark Charcoal + White Frames (DEFAULT) */
+:root {
+    --bg-color: #242424;
+    --frame-border: 8px solid #ffffff;
+    --frame-bg: transparent;
+    --frame-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* COMBINATION 2: Dark Charcoal + Metallic Silver Frames */
+/*
+:root {
+    --bg-color: #242424;
+    --frame-border: 2px solid #e8e8e8;
+    --frame-bg: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 25%, #c0c0c0 50%, #f0f0f0 75%, #c0c0c0 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.8),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+}
+*/
+
+/* COMBINATION 3: Dark Charcoal + Metallic Gold Frames */
+/*
+:root {
+    --bg-color: #242424;
+    --frame-border: 2px solid #d4af37;
+    --frame-bg: linear-gradient(135deg, #b8860b 0%, #ffd700 25%, #daa520 50%, #ffd700 75%, #b8860b 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 235, 145, 0.8),
+        inset 0 -1px 3px rgba(139, 90, 0, 0.4);
+}
+*/
+
+/* COMBINATION 4: Dark Charcoal + Metallic Bronze Frames */
+/*
+:root {
+    --bg-color: #242424;
+    --frame-border: 2px solid #8c5e3c;
+    --frame-bg: linear-gradient(135deg, #8c5e3c 0%, #cd7f32 25%, #a0715e 50%, #cd7f32 75%, #8c5e3c 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(205, 127, 50, 0.6),
+        inset 0 -1px 3px rgba(77, 51, 35, 0.5);
+}
+*/
+
+/* COMBINATION 5: Deep Navy + White Frames */
+/*
+:root {
+    --bg-color: #1e2936;
+    --frame-border: 8px solid #ffffff;
+    --frame-bg: transparent;
+    --frame-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+*/
+
+/* COMBINATION 6: Deep Navy + Metallic Silver Frames */
+/*
+:root {
+    --bg-color: #1e2936;
+    --frame-border: 2px solid #e8e8e8;
+    --frame-bg: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 25%, #c0c0c0 50%, #f0f0f0 75%, #c0c0c0 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.8),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+}
+*/
+
+/* COMBINATION 7: Deep Navy + Metallic Gold Frames */
+/*
+:root {
+    --bg-color: #1e2936;
+    --frame-border: 2px solid #d4af37;
+    --frame-bg: linear-gradient(135deg, #b8860b 0%, #ffd700 25%, #daa520 50%, #ffd700 75%, #b8860b 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 235, 145, 0.8),
+        inset 0 -1px 3px rgba(139, 90, 0, 0.4);
+}
+*/
+
+/* COMBINATION 8: Deep Navy + Metallic Bronze Frames */
+/*
+:root {
+    --bg-color: #1e2936;
+    --frame-border: 2px solid #8c5e3c;
+    --frame-bg: linear-gradient(135deg, #8c5e3c 0%, #cd7f32 25%, #a0715e 50%, #cd7f32 75%, #8c5e3c 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(205, 127, 50, 0.6),
+        inset 0 -1px 3px rgba(77, 51, 35, 0.5);
+}
+*/
+
+/* COMBINATION 9: Warm Dark Brown + White Frames */
+/*
+:root {
+    --bg-color: #2a2520;
+    --frame-border: 8px solid #ffffff;
+    --frame-bg: transparent;
+    --frame-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+*/
+
+/* COMBINATION 10: Warm Dark Brown + Metallic Silver Frames */
+/*
+:root {
+    --bg-color: #2a2520;
+    --frame-border: 2px solid #e8e8e8;
+    --frame-bg: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 25%, #c0c0c0 50%, #f0f0f0 75%, #c0c0c0 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.8),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+}
+*/
+
+/* COMBINATION 11: Warm Dark Brown + Metallic Gold Frames */
+/*
+:root {
+    --bg-color: #2a2520;
+    --frame-border: 2px solid #d4af37;
+    --frame-bg: linear-gradient(135deg, #b8860b 0%, #ffd700 25%, #daa520 50%, #ffd700 75%, #b8860b 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 235, 145, 0.8),
+        inset 0 -1px 3px rgba(139, 90, 0, 0.4);
+}
+*/
+
+/* COMBINATION 12: Warm Dark Brown + Metallic Bronze Frames */
+/*
+:root {
+    --bg-color: #2a2520;
+    --frame-border: 2px solid #8c5e3c;
+    --frame-bg: linear-gradient(135deg, #8c5e3c 0%, #cd7f32 25%, #a0715e 50%, #cd7f32 75%, #8c5e3c 100%);
+    --frame-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(205, 127, 50, 0.6),
+        inset 0 -1px 3px rgba(77, 51, 35, 0.5);
+}
+*/
+
+/* =============================================================================
+   GLOBAL STYLES
+   ============================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-color);
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* =============================================================================
+   HEADER STYLES
+   ============================================================================= */
+
+header {
+    padding: 2rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu span {
+    width: 28px;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    transform: scale(1.1);
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* =============================================================================
+   GALLERY STYLES
+   ============================================================================= */
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--frame-bg);
+    border: var(--frame-border);
+    box-shadow: var(--frame-shadow);
+    transition: all 0.4s ease;
+    aspect-ratio: 1/1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        var(--frame-shadow),
+        0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+    padding: 1.5rem 1rem 1rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.photo-title {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 1200px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 1rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .gallery-container {
+        padding: 2rem 1rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .gallery-item {
+        border-width: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .gallery-container {
+        padding: 1.5rem 1rem;
+    }
+}
