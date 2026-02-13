@@ -1,5 +1,8 @@
 # 🎉 YOU'RE ALL SET! Here's What You Have Now
 
+## 🍎 **MAC USER?** Start with `MAC-GUIDE.md` first!
+(Shows Mac keyboard shortcuts: Cmd instead of Ctrl, TextEdit setup, etc.)
+
 ## 📚 Your Complete Guide Library
 
 I've created **everything you need** to edit your portfolio without any coding knowledge!
