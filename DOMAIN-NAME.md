@@ -6,7 +6,28 @@
 
 ---
 
-## 📍 Option 1: FREE GitHub Pages URL (Default)
+## 📍 Option 1: Your Current Domain - danbaumanphotography.com
+
+**You already own this domain!** 
+
+**Your URL:** `danbaumanphotography.com`
+
+### How to Use It:
+See **`YOUR-DOMAIN.md`** for complete setup instructions!
+
+**Quick overview:**
+1. Configure DNS at your domain provider
+2. Add custom domain in GitHub Pages settings
+3. Wait 1-24 hours for DNS to update
+4. Your portfolio appears at danbaumanphotography.com!
+
+**Cost:** $0 extra (you already own it!)
+
+**Note:** It's a bit long (20 characters), but perfectly functional! You can always buy a shorter domain later if you want.
+
+---
+
+## 📍 Option 2: FREE GitHub Pages URL (Default)
 
 **When you deploy to GitHub Pages, your FREE URL will be:**
 
@@ -35,7 +56,7 @@ https://Dauman998.github.io/macro-gallery/
 
 ---
 
-## 📍 Option 2: Buy a Custom Domain (Recommended)
+## 📍 Option 3: Buy Another Custom Domain (For Shorter URL)
 
 **You can buy your own domain like:**
 - `danbauman.com`
@@ -74,7 +95,7 @@ https://Dauman998.github.io/macro-gallery/
 
 ---
 
-## 📍 Option 3: Subdomain (Also Works)
+## 📍 Option 4: Subdomain (Also Works)
 
 Instead of buying `danbauman.com`, you could use:
 - `portfolio.danbauman.com`
