@@ -5,7 +5,7 @@ A professional, minimalist photography portfolio website featuring a customizabl
 ## 🎨 Features
 
 - **Clean, minimalist design** with professional header
-- **8-image gallery** in a responsive 4-4 grid layout (2 rows, 4 columns)
+- **8-image gallery** in a responsive 2-column staggered layout
 - **12 style combinations** using CSS variables for easy switching
   - 3 background colors (Dark Charcoal, Deep Navy, Warm Dark Brown)
   - 4 frame styles (Classic White, Metallic Silver, Metallic Gold, Metallic Bronze)
@@ -266,8 +266,9 @@ Replace with your name and style.
 In `styles.css`, find `.gallery` and modify:
 ```css
 .gallery {
-    grid-template-columns: repeat(4, 1fr); /* Change 4 to your desired columns */
+    grid-template-columns: repeat(2, 1fr); /* Currently 2 columns with staggered layout */
     gap: 2rem; /* Adjust spacing */
+    column-gap: 3rem; /* Adjust column spacing */
 }
 ```
 

@@ -263,8 +263,9 @@ h1 {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    column-gap: 3rem;
 }
 
 .gallery-item {
@@ -276,6 +277,12 @@ h1 {
     box-shadow: var(--frame-shadow);
     transition: all 0.4s ease;
     aspect-ratio: 1/1;
+}
+
+/* Staggered effect - offset every other item in each column */
+.gallery-item:nth-child(4n+2),
+.gallery-item:nth-child(4n+3) {
+    margin-top: 4rem;
 }
 
 .gallery-item img {
@@ -327,8 +334,14 @@ h1 {
 
 @media (max-width: 1200px) {
     .gallery {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+        column-gap: 2.5rem;
+    }
+    
+    .gallery-item:nth-child(4n+2),
+    .gallery-item:nth-child(4n+3) {
+        margin-top: 3rem;
     }
 }
 
@@ -349,6 +362,12 @@ h1 {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+        column-gap: 1.5rem;
+    }
+    
+    .gallery-item:nth-child(4n+2),
+    .gallery-item:nth-child(4n+3) {
+        margin-top: 2rem;
     }
 }
 
@@ -360,6 +379,12 @@ h1 {
     .gallery {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    /* Remove staggered effect on very small screens */
+    .gallery-item:nth-child(4n+2),
+    .gallery-item:nth-child(4n+3) {
+        margin-top: 0;
     }
 
     .gallery-container {
