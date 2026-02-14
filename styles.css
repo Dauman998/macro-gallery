@@ -407,38 +407,51 @@ h1 {
     opacity: 0.8;
 }
 
-/* Two-line logo styling */
-.two-line-logo {
+/* Logo with vertical line styling */
+.logo-with-line {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     line-height: 1;
 }
 
-.two-line-logo .logo-link {
+.logo-with-line .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.vertical-line {
+    width: 3px;
+    height: 80px;
+    background-color: #111111;
+    flex-shrink: 0;
+}
+
+.text-stack {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end; /* Right-align text so "n" and "y" line up */
     gap: 0;
 }
 
 .name-line {
-    font-size: 1.3rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
+    font-size: 26px;
+    font-weight: 400;
+    color: #111111;
     margin: 0;
     padding: 0;
-    line-height: 1.2;
+    line-height: 1;
+    letter-spacing: 0;
 }
 
 .tagline-line {
-    font-size: 0.85rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
+    font-size: 18px;
+    font-weight: 400;
+    color: #111111;
     margin: 0;
     padding: 0;
-    line-height: 1.2;
-    opacity: 0.9;
+    line-height: 1;
+    letter-spacing: 0;
 }
 
 /* Navigation */
