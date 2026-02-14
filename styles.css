@@ -25,6 +25,9 @@ AVAILABLE COMBINATIONS:
 =============================================================================
 */
 
+/* Google Fonts Import - DM Serif Text */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
 /* =============================================================================
    ACTIVE STYLE CONFIGURATION
    Uncomment ONE combination below (remove /* and */)
@@ -431,12 +434,13 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-end; /* Right-align text so "n" and "y" line up */
-    gap: 0;
+    gap: 8px; /* Spacing between lines */
 }
 
 .name-line {
     font-size: 26px;
     font-weight: 400;
+    font-family: 'DM Serif Text', serif;
     color: #111111;
     margin: 0;
     padding: 0;
@@ -447,6 +451,7 @@ h1 {
 .tagline-line {
     font-size: 18px;
     font-weight: 400;
+    font-family: 'DM Serif Text', serif;
     color: #111111;
     margin: 0;
     padding: 0;
