@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Dan Bauman Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="site-title">
+                <span class="name">dan bauman</span>
+                <span class="separator">|</span>
+                <span class="tagline">photography</span>
+            </h1>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html" class="active">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="portfolio-page">
+        <section class="portfolio-intro">
+            <p>Welcome to my macro photography collection. Each image captures the intricate beauty of the natural world, revealing details often invisible to the naked eye. Through careful composition and lighting, I aim to showcase the extraordinary complexity found in the smallest subjects.</p>
+        </section>
+
+        <section class="portfolio-grid">
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro1.jpg" alt="Macro photography 1" data-title="Dewdrop Symphony" data-description="Morning dew on a spider's web, catching the first light of day.">
+            </div>
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro2.jpg" alt="Macro photography 2" data-title="Crystal Details" data-description="Ice crystals forming delicate patterns on a winter leaf.">
+            </div>
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro3.jpg" alt="Macro photography 3" data-title="Petal Texture" data-description="The intricate texture of a rose petal illuminated by soft light.">
+            </div>
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro4.jpg" alt="Macro photography 4" data-title="Insect Portrait" data-description="A close encounter with a dragonfly, revealing its compound eyes.">
+            </div>
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro5.jpg" alt="Macro photography 5" data-title="Water Reflections" data-description="Droplets on a leaf surface creating miniature worlds.">
+            </div>
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro6.jpg" alt="Macro photography 6" data-title="Nature's Geometry" data-description="The perfect symmetry found in a flower's center.">
+            </div>
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro7.jpg" alt="Macro photography 7" data-title="Autumn Mosaic" data-description="Fallen leaves revealing their intricate vein patterns.">
+            </div>
+            <div class="image-item lightbox-trigger">
+                <img src="images/macro8.jpg" alt="Macro photography 8" data-title="Morning Light" data-description="Backlit grass blades creating abstract natural art.">
+            </div>
+        </section>
+
+        <button class="back-to-top" aria-label="Back to top">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </main>
+
+    <script src="navigation.js"></script>
+    <script src="lightbox.js"></script>
+    <script src="scroll-effects.js"></script>
+</body>
+</html>
