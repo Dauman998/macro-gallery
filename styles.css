@@ -455,18 +455,17 @@ h1 {
     border-left: 3px solid #ffffff;
 }
 
-/* Desktop navigation */
+/* Desktop navigation - Hamburger menu on all screen sizes */
 @media (min-width: 769px) {
-    .hamburger-menu {
-        display: none;
-    }
+    /* Keep hamburger menu visible on desktop - removed the display:none */
     
+    /* Keep navigation menu behavior same as mobile */
     .main-nav {
-        display: block;
-        position: static;
-        border: none;
+        /* Menu stays in mobile dropdown style even on desktop */
     }
     
+    /* This section is now unused - hamburger menu used on all screens */
+    /*
     .main-nav ul {
         display: flex;
         justify-content: flex-end;
@@ -476,21 +475,9 @@ h1 {
     .main-nav li {
         border: none;
     }
+    */
     
-    .main-nav a {
-        padding: 0.5rem 1.5rem;
-        font-size: 1rem;
-    }
-    
-    .main-nav a:hover {
-        padding: 0.5rem 1.5rem;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-    
-    .main-nav a.active {
-        border-left: none;
-        border-bottom: 2px solid #ffffff;
-    }
+    /* Desktop keeps same link styles as mobile when using hamburger menu */
 }
 
 /* =============================================================================
