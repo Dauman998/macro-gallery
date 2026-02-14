@@ -30,7 +30,7 @@ A sophisticated, professional 4-page photography portfolio website for macro pho
 **Elements**:
 - Header with site title and hamburger menu
 - Introduction text area (3-4 sentences about the work)
-- 8 images in 4-4 grid layout (2 rows of 4 images)
+- 8 images in 4-column responsive grid layout
 - Back-to-top button (right side)
 
 **Features**:

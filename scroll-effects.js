@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let lastScrollTop = 0;
     let scrollTimeout;
-    let isScrolling = false;
     
     // Header auto-hide functionality
     window.addEventListener('scroll', function() {
@@ -21,17 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (scrollTop > lastScrollTop && scrollTop > 100) {
             // Scrolling down - hide header
             header.classList.add('hidden');
-            isScrolling = true;
         } else if (scrollTop < lastScrollTop) {
             // Scrolling up - show header
             header.classList.remove('hidden');
-            isScrolling = true;
         }
         
         // Show header when scrolling stops
         scrollTimeout = setTimeout(function() {
             header.classList.remove('hidden');
-            isScrolling = false;
         }, 150);
         
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
