@@ -767,7 +767,7 @@ h1 {
 .contact-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 1.5rem 2rem 1rem; /* Reduced from 3rem to 1.5rem top, 1rem bottom */
     background-color: #ffffff; /* White background */
     color: #333333; /* Dark text for readability */
 }
@@ -775,33 +775,33 @@ h1 {
 .contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 2rem; /* Reduced from 3rem to 2rem */
 }
 
 .contact-info h2 {
     font-family: 'DM Serif Text', serif;
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduced from 2.5rem to 2rem */
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem; /* Reduced from 1rem to 0.7rem */
     letter-spacing: 0.5px;
     color: #111111;
 }
 
 .contact-intro {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
+    font-size: 1rem; /* Reduced from 1.1rem to 1rem */
+    margin-bottom: 1.5rem; /* Reduced from 2.5rem to 1.5rem */
+    line-height: 1.6; /* Reduced from 1.8 to 1.6 */
     color: #555555;
 }
 
 .contact-methods {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem; /* Reduced from 2rem to 1rem */
 }
 
 .contact-method {
-    padding: 1.5rem;
+    padding: 1rem; /* Reduced from 1.5rem to 1rem */
     background: #f8f8f8;
     border-radius: 6px;
     border: 1px solid #e0e0e0;
@@ -817,9 +817,9 @@ h1 {
 
 .contact-method h3 {
     font-family: 'DM Serif Text', serif;
-    font-size: 1.15rem;
+    font-size: 1rem; /* Reduced from 1.15rem to 1rem */
     font-weight: 400;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.5rem; /* Reduced from 0.7rem to 0.5rem */
     letter-spacing: 0.5px;
     color: #222222;
 }
@@ -866,7 +866,7 @@ h1 {
 
 .contact-form-section {
     background: #f8f8f8;
-    padding: 2.5rem;
+    padding: 1.5rem; /* Reduced from 2.5rem to 1.5rem */
     border-radius: 8px;
     border: 1px solid #e0e0e0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
@@ -874,9 +874,9 @@ h1 {
 
 .contact-form-section h3 {
     font-family: 'DM Serif Text', serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Reduced from 1.8rem to 1.5rem */
     font-weight: 400;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem; /* Reduced from 1.5rem to 1rem */
     letter-spacing: 0.5px;
     color: #111111;
 }
@@ -884,7 +884,7 @@ h1 {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: 1rem; /* Reduced from 1.8rem to 1rem */
 }
 
 .form-group {
@@ -894,9 +894,9 @@ h1 {
 }
 
 .form-group label {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem; /* Reduced from 0.6rem to 0.4rem */
     font-family: 'DM Serif Text', serif;
-    font-size: 0.95rem;
+    font-size: 0.85rem; /* Reduced from 0.95rem to 0.85rem */
     letter-spacing: 0.8px;
     color: #333333;
     text-transform: uppercase;
@@ -905,13 +905,13 @@ h1 {
 
 .form-group input,
 .form-group textarea {
-    padding: 1rem 1.2rem;
+    padding: 0.7rem 1rem; /* Reduced from 1rem 1.2rem to 0.7rem 1rem */
     background: #ffffff;
     border: 1px solid #d0d0d0;
     border-radius: 6px;
     color: #333333;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 0.95rem; /* Reduced from 1rem to 0.95rem */
     transition: all 0.3s ease;
 }
 
@@ -930,20 +930,20 @@ h1 {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 140px;
-    line-height: 1.6;
+    min-height: 80px; /* Reduced from 140px to 80px */
+    line-height: 1.5; /* Reduced from 1.6 to 1.5 */
 }
 
 .contact-form button[type="submit"] {
     cursor: pointer;
-    margin-top: 0.5rem;
-    padding: 1.1rem 2.5rem;
+    margin-top: 0.3rem; /* Reduced from 0.5rem to 0.3rem */
+    padding: 0.85rem 2rem; /* Reduced from 1.1rem 2.5rem to 0.85rem 2rem */
     background: #3498db;
     border: none;
     border-radius: 6px;
     color: #ffffff;
     font-family: 'DM Serif Text', serif;
-    font-size: 1.05rem;
+    font-size: 1rem; /* Reduced from 1.05rem to 1rem */
     letter-spacing: 1.5px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -961,12 +961,12 @@ h1 {
 }
 
 .form-note {
-    margin-top: 1.5rem;
-    font-size: 0.85rem;
+    margin-top: 1rem; /* Reduced from 1.5rem to 1rem */
+    font-size: 0.8rem; /* Reduced from 0.85rem to 0.8rem */
     color: #666666;
     font-style: italic;
-    line-height: 1.6;
-    padding: 1rem;
+    line-height: 1.5; /* Reduced from 1.6 to 1.5 */
+    padding: 0.8rem; /* Reduced from 1rem to 0.8rem */
     background: #f0f0f0;
     border-left: 3px solid #3498db;
     border-radius: 4px;
