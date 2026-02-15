@@ -190,8 +190,8 @@ AVAILABLE COMBINATIONS:
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: var(--bg-color);
-    color: #ffffff;
+    background-color: #f9f9f9; /* Off-white background instead of dark */
+    color: #333333; /* Dark text for light background */
     line-height: 1.6;
 }
 
@@ -241,6 +241,10 @@ h1 {
 
 .hamburger-menu:hover {
     transform: scale(1.1);
+}
+
+.hamburger-menu.active {
+    z-index: 9999; /* Ensure X is clickable above everything */
 }
 
 .hamburger-menu.active span:nth-child(1) {
@@ -477,7 +481,7 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #f9f9f9; /* Off-white to match menu */
     z-index: 998;
 }
 
@@ -494,10 +498,10 @@ h1 {
     bottom: 0;
     width: 300px; /* Fixed width for right-side menu */
     padding-top: 120px; /* Add padding to account for header height */
-    background-color: var(--bg-color);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #f9f9f9; /* Off-white background */
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
     z-index: 999;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .main-nav.active {
@@ -513,13 +517,13 @@ h1 {
 }
 
 .main-nav li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .main-nav a {
     display: block;
     padding: 1rem 2rem;
-    color: #ffffff;
+    color: #333333; /* Dark text for light menu */
     text-decoration: none;
     font-size: 1.1rem;
     letter-spacing: 1px;
@@ -527,13 +531,13 @@ h1 {
 }
 
 .main-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     padding-left: 2.5rem;
 }
 
 .main-nav a.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-left: 3px solid #ffffff;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-left: 3px solid #333333;
 }
 
 /* Desktop navigation - Hamburger menu on all screen sizes */
@@ -766,7 +770,7 @@ h1 {
 
 .contact-page {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 100px auto 0; /* Add 100px top margin to clear header */
     padding: 1.5rem 2rem 1rem; /* Reduced from 3rem to 1.5rem top, 1rem bottom */
     background-color: #ffffff; /* White background */
     color: #333333; /* Dark text for readability */
@@ -988,7 +992,7 @@ h1 {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background-color: #000;
+    background-color: #f9f9f9; /* Off-white background */
 }
 
 .slideshow-container {
