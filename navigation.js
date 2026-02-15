@@ -2,19 +2,25 @@
 const hamburger = document.getElementById('hamburger');
 const mainNav = document.getElementById('mainNav');
 
+// Create and add menu overlay
+const menuOverlay = document.createElement('div');
+menuOverlay.className = 'menu-overlay';
+menuOverlay.id = 'menuOverlay';
+document.body.appendChild(menuOverlay);
+
 if (hamburger && mainNav) {
-    hamburger.addEventListener('click', function() {
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
         this.classList.toggle('active');
         mainNav.classList.toggle('active');
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function closeMenu(e) {
-            if (!hamburger.contains(e.target) && !mainNav.contains(e.target)) {
-                hamburger.classList.remove('active');
-                mainNav.classList.remove('active');
-                document.removeEventListener('click', closeMenu);
-            }
-        });
+        menuOverlay.classList.toggle('active');
+    });
+    
+    // Close menu when clicking overlay
+    menuOverlay.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        mainNav.classList.remove('active');
+        menuOverlay.classList.remove('active');
     });
     
     // Close menu when clicking a link
@@ -23,6 +29,7 @@ if (hamburger && mainNav) {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             mainNav.classList.remove('active');
+            menuOverlay.classList.remove('active');
         });
     });
 }

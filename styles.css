@@ -244,7 +244,7 @@ h1 {
 }
 
 .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
+    transform: rotate(45deg) translate(9px, 9px);
 }
 
 .hamburger-menu.active span:nth-child(2) {
@@ -252,7 +252,7 @@ h1 {
 }
 
 .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
+    transform: rotate(-45deg) translate(9px, -9px);
 }
 
 /* =============================================================================
@@ -443,7 +443,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-end; /* Right-align text so "n" and "y" line up */
-    gap: 8px; /* Spacing between lines */
+    gap: 12px; /* Increased spacing between lines from 8px to 12px */
 }
 
 .name-line {
@@ -464,21 +464,40 @@ h1 {
     color: #111111;
     margin: 0;
     padding: 0;
+    padding-right: 1px; /* Move 1 pixel to the left */
     line-height: 1;
     letter-spacing: 0;
+}
+
+/* Menu Overlay - Dark background behind menu */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+}
+
+.menu-overlay.active {
+    display: block;
 }
 
 /* Navigation */
 .main-nav {
     display: none;
     position: fixed;
-    top: 0; /* Changed from 80px to 0 to eliminate gap */
-    left: 0;
-    right: 0;
+    top: 0;
+    right: 0; /* Position menu on the right side */
+    bottom: 0;
+    width: 300px; /* Fixed width for right-side menu */
     padding-top: 120px; /* Add padding to account for header height */
     background-color: var(--bg-color);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 999;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .main-nav.active {
