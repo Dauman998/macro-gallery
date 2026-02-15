@@ -248,7 +248,7 @@ h1 {
 }
 
 .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(9px, 9px);
+    transform: rotate(45deg) translate(10px, 10px);
 }
 
 .hamburger-menu.active span:nth-child(2) {
@@ -256,7 +256,7 @@ h1 {
 }
 
 .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(9px, -9px);
+    transform: rotate(-45deg) translate(10px, -10px);
 }
 
 /* =============================================================================
@@ -473,7 +473,7 @@ h1 {
     letter-spacing: 0;
 }
 
-/* Menu Overlay - Dark background behind menu */
+/* Menu Overlay - Semi-transparent so content is visible */
 .menu-overlay {
     display: none;
     position: fixed;
@@ -481,7 +481,8 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f9f9f9; /* Off-white to match menu */
+    background-color: rgba(249, 249, 249, 0.4); /* Semi-transparent off-white */
+    backdrop-filter: blur(2px); /* Subtle blur effect */
     z-index: 998;
 }
 
@@ -528,16 +529,18 @@ h1 {
     font-size: 1.1rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .main-nav a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    padding-left: 2.5rem;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 70%, transparent 70%);
+    transform: translateX(-15px); /* Slide left */
 }
 
 .main-nav a.active {
-    background-color: rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.08) 70%, transparent 70%);
     border-left: 3px solid #333333;
+    transform: translateX(-15px); /* Stay slid left */
 }
 
 /* Desktop navigation - Hamburger menu on all screen sizes */
