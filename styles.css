@@ -34,15 +34,16 @@ AVAILABLE COMBINATIONS:
    ============================================================================= */
 
 /* COMBINATION 1: Dark Charcoal + White Frames (DEFAULT) */
+/*
 :root {
     --bg-color: #242424;
     --frame-border: 8px solid #ffffff;
     --frame-bg: transparent;
     --frame-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+*/
 
 /* COMBINATION 2: Dark Charcoal + Metallic Silver Frames */
-/*
 :root {
     --bg-color: #242424;
     --frame-border: 2px solid #e8e8e8;
@@ -52,7 +53,6 @@ AVAILABLE COMBINATIONS:
         inset 0 1px 3px rgba(255, 255, 255, 0.8),
         inset 0 -1px 3px rgba(0, 0, 0, 0.3);
 }
-*/
 
 /* COMBINATION 3: Dark Charcoal + Metallic Gold Frames */
 /*
@@ -201,7 +201,8 @@ body {
 
 header {
     padding: 2rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #f5f5f5; /* Light header background */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
@@ -234,7 +235,7 @@ h1 {
 .hamburger-menu span {
     width: 28px;
     height: 2px;
-    background-color: #ffffff;
+    background-color: #111111; /* Dark color for light header */
     transition: all 0.3s ease;
 }
 
@@ -243,7 +244,7 @@ h1 {
 }
 
 .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
+    transform: rotate(45deg) translate(8px, 8px);
 }
 
 .hamburger-menu.active span:nth-child(2) {
@@ -251,7 +252,7 @@ h1 {
 }
 
 .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg) translate(8px, -8px);
 }
 
 /* =============================================================================
@@ -307,7 +308,7 @@ h1 {
     transform: scale(1.1);
 }
 
-/* Overlay */
+/* Overlay - Hidden by default, visible on hover */
 .overlay {
     position: absolute;
     bottom: 0;
@@ -315,12 +316,14 @@ h1 {
     right: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
     padding: 1.5rem 1rem 1rem;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Also set to hidden */
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .gallery-item:hover .overlay {
     opacity: 1;
+    visibility: visible; /* Show on hover */
 }
 
 .photo-title {
@@ -329,6 +332,12 @@ h1 {
     color: #ffffff;
     text-align: center;
     letter-spacing: 1px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .photo-title {
+    opacity: 1; /* Show on hover */
 }
 
 /* =============================================================================
@@ -463,9 +472,10 @@ h1 {
 .main-nav {
     display: none;
     position: fixed;
-    top: 80px;
+    top: 0; /* Changed from 80px to 0 to eliminate gap */
     left: 0;
     right: 0;
+    padding-top: 120px; /* Add padding to account for header height */
     background-color: var(--bg-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 999;
@@ -732,13 +742,15 @@ h1 {
 }
 
 /* =============================================================================
-   CONTACT PAGE STYLES
+   CONTACT PAGE STYLES - Light & Clean Theme
    ============================================================================= */
 
 .contact-page {
     max-width: 1200px;
     margin: 0 auto;
     padding: 3rem 2rem;
+    background-color: #ffffff; /* White background */
+    color: #333333; /* Dark text for readability */
 }
 
 .contact-container {
@@ -753,13 +765,14 @@ h1 {
     font-weight: 400;
     margin-bottom: 1rem;
     letter-spacing: 0.5px;
+    color: #111111;
 }
 
 .contact-intro {
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
     line-height: 1.8;
-    opacity: 0.9;
+    color: #555555;
 }
 
 .contact-methods {
@@ -770,16 +783,17 @@ h1 {
 
 .contact-method {
     padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    background: #f8f8f8;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #e0e0e0;
     transition: all 0.3s ease;
 }
 
 .contact-method:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: #f0f0f0;
+    border-color: #d0d0d0;
     transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .contact-method h3 {
@@ -788,16 +802,21 @@ h1 {
     font-weight: 400;
     margin-bottom: 0.7rem;
     letter-spacing: 0.5px;
+    color: #222222;
+}
+
+.contact-method p {
+    color: #555555;
 }
 
 .contact-method a {
-    color: #ffffff;
+    color: #2c3e50;
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .contact-method a:hover {
-    opacity: 0.7;
+    color: #3498db;
 }
 
 .social-links {
@@ -809,27 +828,29 @@ h1 {
 
 .social-links a {
     padding: 0.6rem 1.3rem;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
     border-radius: 6px;
     transition: all 0.3s ease;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
+    color: #333333;
 }
 
 .social-links a:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: #3498db;
+    color: #ffffff;
+    border-color: #3498db;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
 .contact-form-section {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    background: #f8f8f8;
     padding: 2.5rem;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .contact-form-section h3 {
@@ -838,7 +859,7 @@ h1 {
     font-weight: 400;
     margin-bottom: 1.5rem;
     letter-spacing: 0.5px;
-    color: #ffffff;
+    color: #111111;
 }
 
 .contact-form {
@@ -858,7 +879,7 @@ h1 {
     font-family: 'DM Serif Text', serif;
     font-size: 0.95rem;
     letter-spacing: 0.8px;
-    color: rgba(255, 255, 255, 0.9);
+    color: #333333;
     text-transform: uppercase;
     font-weight: 400;
 }
@@ -866,28 +887,26 @@ h1 {
 .form-group input,
 .form-group textarea {
     padding: 1rem 1.2rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
     border-radius: 6px;
-    color: #ffffff;
+    color: #333333;
     font-family: inherit;
     font-size: 1rem;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: #999999;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+    border-color: #3498db;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .form-group textarea {
@@ -900,24 +919,22 @@ h1 {
     cursor: pointer;
     margin-top: 0.5rem;
     padding: 1.1rem 2.5rem;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #3498db;
+    border: none;
     border-radius: 6px;
     color: #ffffff;
     font-family: 'DM Serif Text', serif;
     font-size: 1.05rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(52, 152, 219, 0.3);
 }
 
 .contact-form button[type="submit"]:hover {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: #2980b9;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(52, 152, 219, 0.4);
 }
 
 .contact-form button[type="submit"]:active {
@@ -927,12 +944,12 @@ h1 {
 .form-note {
     margin-top: 1.5rem;
     font-size: 0.85rem;
-    opacity: 0.6;
+    color: #666666;
     font-style: italic;
     line-height: 1.6;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    background: #f0f0f0;
+    border-left: 3px solid #3498db;
     border-radius: 4px;
 }
 
