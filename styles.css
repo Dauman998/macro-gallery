@@ -202,7 +202,8 @@ body {
 header {
     padding: 1.5rem 2rem;
     background-color: #f5f5f5; /* Light header background */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border: 5px solid #FF0000; /* BRIGHT RED BORDER TEST - YOU WILL SEE THIS! */
+    border-bottom: 5px solid #FF0000;
 }
 
 .header-content {
