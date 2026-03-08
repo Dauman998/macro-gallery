@@ -1,835 +1,126 @@
-/* 
-=============================================================================
-PHOTOGRAPHY PORTFOLIO - 12 STYLE COMBINATIONS
-=============================================================================
-
-HOW TO SWITCH STYLES:
-1. Find the "ACTIVE STYLE CONFIGURATION" section below
-2. Uncomment ONE of the 12 combinations (remove the /* and */)
-3. Make sure all other combinations are commented out
-4. Save the file and refresh your browser
-
-AVAILABLE COMBINATIONS:
-- Dark Charcoal + White Frames (DEFAULT - already active)
-- Dark Charcoal + Metallic Silver Frames
-- Dark Charcoal + Metallic Gold Frames
-- Dark Charcoal + Metallic Bronze Frames
-- Deep Navy + White Frames
-- Deep Navy + Metallic Silver Frames
-- Deep Navy + Metallic Gold Frames
-- Deep Navy + Metallic Bronze Frames
-- Warm Dark Brown + White Frames
-- Warm Dark Brown + Metallic Silver Frames
-- Warm Dark Brown + Metallic Gold Frames
-- Warm Dark Brown + Metallic Bronze Frames
-=============================================================================
-*/
-
-/* Google Fonts Import - DM Serif Text */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
-
-/* =============================================================================
-   ACTIVE STYLE CONFIGURATION
-   Uncomment ONE combination below (remove /* and */)
-   ============================================================================= */
-
-/* COMBINATION 1: Dark Charcoal + White Frames (DEFAULT) */
-/*
-:root {
-  --bg-color: #242424;
-  --frame-border: 8px solid #ffffff;
-  --frame-bg: transparent;
-  --frame-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-*/
-
-/* COMBINATION 2: Dark Charcoal + Metallic Silver Frames (ACTIVE) */
-:root {
-  --bg-color: #242424;
-  --frame-border: 2px solid #e8e8e8;
-  --frame-bg: linear-gradient(
-    135deg,
-    #c0c0c0 0%,
-    #f0f0f0 25%,
-    #c0c0c0 50%,
-    #f0f0f0 75%,
-    #c0c0c0 100%
-  );
-  --frame-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.4),
-    inset 0 1px 3px rgba(255, 255, 255, 0.8),
-    inset 0 -1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* =============================================================================
-   GLOBAL STYLES
-   ============================================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, sans-serif;
-  background-color: #f9f9f9;
-  color: #333333;
-  line-height: 1.6;
-
-  /* IMPORTANT: pushes all pages below fixed header */
-  padding-top: 92px;
-}
-
-/* =============================================================================
-   HEADER + NAVIGATION (FIXED, SINGLE SOURCE OF TRUTH)
-   - removes duplicates you had in: "NAVIGATION MENU STYLES" + "AUTO-HIDING HEADER"
-   - hamburger larger on desktop, scales down on mobile
-   ============================================================================= */
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-
-  background-color: #f5f5f5;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-  padding: 0.9rem 1rem;
-  transition: transform 0.3s ease;
-}
-
-/* used by your scroll script */
-header.header-hidden {
-  transform: translateY(-100%);
-}
-
-.header-content {
-  max-width: 1600px;
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* prevent any generic h1 rules from affecting logo */
-header h1 {
-  margin: 0;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-/* Logo */
-.logo-link {
-  color: inherit; /* do NOT force white on light header */
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.logo-link:hover {
-  opacity: 0.85;
-}
-
-.logo-with-line {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.logo-with-line .logo-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.vertical-line {
-  width: 3px;
-  height: clamp(70px, 4.5vw, 110px);
-  background-color: #111111;
-  flex-shrink: 0;
-}
-
-.text-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 12px;
-}
-
-.name-line {
-  font-size: clamp(28px, 1.6vw, 40px);
-  font-weight: 400;
-  font-family: "DM Serif Text", serif;
-  color: #111111;
-  line-height: 1;
-}
-
-.tagline-line {
-  font-size: clamp(18px, 1.1vw, 28px);
-  font-weight: 400;
-  font-family: "DM Serif Text", serif;
-  color: #111111;
-  line-height: 1;
-  padding-right: 1px;
-}
-
-/* Hamburger */
-.hamburger-menu {
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  padding: 0.55rem; /* bigger click target */
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-
-  transition: transform 0.3s ease;
-}
-
-.hamburger-menu span {
-  width: 36px;
-  height: 3px;
-  background-color: #111111;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.hamburger-menu:hover {
-  transform: scale(1.07);
-}
-
-.hamburger-menu.active {
-  z-index: 9999;
-}
-
-/* X animation */
-.hamburger-menu.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
-}
-.hamburger-menu.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger-menu.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
-}
-
-/* Menu overlay + slide-in nav */
-.menu-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(249, 249, 249, 0.4);
-  backdrop-filter: blur(2px);
-  z-index: 998;
-}
-.menu-overlay.active {
-  display: block;
-}
-
-.main-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-
-  width: 300px;
-  padding-top: 120px;
-
-  background-color: #f9f9f9;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-
-  z-index: 999;
-}
-.main-nav.active {
-  display: block;
-}
-
-.main-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.main-nav li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.main-nav a {
-  display: block;
-  padding: 1rem 2rem;
-
-  color: #333333;
-  text-decoration: none;
-
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.main-nav a:hover {
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0.05) 70%,
-    transparent 70%
-  );
-  transform: translateX(-15px);
-}
-
-.main-nav a.active {
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.08) 0%,
-    rgba(0, 0, 0, 0.08) 70%,
-    transparent 70%
-  );
-  border-left: 3px solid #333333;
-  transform: translateX(-15px);
-}
-
-/* =============================================================================
-   GALLERY STYLES
-   ============================================================================= */
-
-.gallery-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 5rem 2rem 3rem;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  column-gap: 3rem;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: var(--frame-bg);
-  border: var(--frame-border);
-  box-shadow: var(--frame-shadow);
-  transition: all 0.4s ease;
-  aspect-ratio: 1 / 1;
-}
-
-/* Staggered effect */
-.gallery-item:nth-child(4n + 2),
-.gallery-item:nth-child(4n + 3) {
-  margin-top: 4rem;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--frame-shadow), 0 12px 30px rgba(0, 0, 0, 0.5);
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1);
-}
-
-/* Overlay */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    transparent 100%
-  );
-  padding: 1.5rem 1rem 1rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.gallery-item:hover .overlay {
-  opacity: 1;
-  visibility: visible;
-}
-
-.photo-title {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: center;
-  letter-spacing: 1px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.gallery-item:hover .photo-title {
-  opacity: 1;
-}
-
-/* =============================================================================
-   HOME PAGE STYLES
-   ============================================================================= */
-
-.home-hero {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-}
-
-.hero-content {
-  text-align: center;
-  padding: 3rem 0;
-}
-
-.hero-title {
-  font-size: 3rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  font-weight: 300;
-  opacity: 0.9;
-  margin-bottom: 2rem;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  border: 2px solid #ffffff;
-}
-
-.btn-primary {
-  background-color: #ffffff;
-  color: var(--bg-color);
-}
-
-.btn-primary:hover {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-.btn-secondary:hover {
-  background-color: #ffffff;
-  color: var(--bg-color);
-}
-
-.featured-work {
-  margin-top: 4rem;
-}
-
-.featured-work h3 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 300;
-  margin-bottom: 2rem;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-/* =============================================================================
-   ABOUT PAGE STYLES
-   ============================================================================= */
-
-.about-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 5rem 2rem 3rem;
-}
-
-.about-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-/* =============================================================================
-   CONTACT PAGE STYLES - Light & Clean Theme (FULL REWRITE)
-   ============================================================================= */
-
-.contact-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2.5rem 1rem 2rem;
-  background-color: #ffffff;
-  color: #333333;
-}
-
-.contact-container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(1.5rem, 3vw, 4rem);
-  align-items: start;
-}
-
-.contact-info h2 {
-  font-family: "DM Serif Text", serif;
-  font-size: clamp(1.9rem, 1.2vw, 2.4rem);
-  font-weight: 400;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.5px;
-  color: #111111;
-}
-
-.contact-intro {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  color: #555555;
-}
-
-.contact-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.contact-method {
-  padding: 1rem;
-  background: #f8f8f8;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-method:hover {
-  background: #f0f0f0;
-  border-color: #d0d0d0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.contact-method h3 {
-  font-family: "DM Serif Text", serif;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
-  color: #222222;
-}
-
-.contact-method p {
-  color: #555555;
-}
-
-.contact-method a {
-  color: #2c3e50;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-method a:hover {
-  color: #3498db;
-}
-
-.social-links {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-.social-links a {
-  padding: 0.6rem 1.1rem;
-  background: #ffffff;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
-    transform 0.3s ease, box-shadow 0.3s ease;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  color: #333333;
-}
-
-.social-links a:hover {
-  background: #3498db;
-  color: #ffffff;
-  border-color: #3498db;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-}
-
-.contact-form-section {
-  background: #f8f8f8;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-}
-
-.contact-form-section h3 {
-  font-family: "DM Serif Text", serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 1rem;
-  letter-spacing: 0.5px;
-  color: #111111;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin-bottom: 0.4rem;
-  font-family: "DM Serif Text", serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.8px;
-  color: #333333;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 0.7rem 1rem;
-  background: #ffffff;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  color: #333333;
-  font-family: inherit;
-  font-size: 0.95rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-  line-height: 1.5;
-}
-
-.contact-form button[type="submit"] {
-  cursor: pointer;
-  margin-top: 0.25rem;
-  padding: 0.85rem 2rem;
-  background: #3498db;
-  border: none;
-  border-radius: 6px;
-  color: #ffffff;
-  font-family: "DM Serif Text", serif;
-  font-size: 1rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.3);
-}
-
-.contact-form button[type="submit"]:hover {
-  background: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.4);
-}
-
-.contact-form button[type="submit"]:active {
-  transform: translateY(0);
-}
-
-.form-status {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: #333333;
-  min-height: 1.2em;
-}
-
-/* =============================================================================
-   RESPONSIVE DESIGN (SITE-WIDE)
-   ============================================================================= */
-
-@media (max-width: 1200px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    column-gap: 2.5rem;
-  }
-
-  .gallery-item:nth-child(4n + 2),
-  .gallery-item:nth-child(4n + 3) {
-    margin-top: 3rem;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Header sizing on mobile */
-  body {
-    padding-top: 84px;
-  }
-
-  header {
-    padding: 0.85rem 0.75rem;
-  }
-
-  .vertical-line {
-    height: 70px;
-  }
-
-  .text-stack {
-    gap: 10px;
-  }
-
-  .name-line {
-    font-size: 26px;
-  }
-
-  .tagline-line {
-    font-size: 17px;
-  }
-
-  .hamburger-menu {
-    padding: 0.45rem;
-    gap: 6px;
-  }
-
-  .hamburger-menu span {
-    width: 30px;
-    height: 2px;
-  }
-
-  .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
-  }
-
-  .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-  }
-
-  /* Gallery */
-  .gallery-container {
-    padding: 2rem 1rem;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    column-gap: 1.5rem;
-  }
-
-  .gallery-item:nth-child(4n + 2),
-  .gallery-item:nth-child(4n + 3) {
-    margin-top: 2rem;
-  }
-
-  /* Contact page stacks */
-  .contact-page {
-    padding: 1.75rem 1rem 2rem;
-  }
-
-  .contact-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .form-group textarea {
-    min-height: 90px;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Header sizing on small phones */
-  body {
-    padding-top: 80px;
-  }
-
-  header {
-    padding: 0.75rem 0.6rem;
-  }
-
-  .vertical-line {
-    height: 62px;
-  }
-
-  .text-stack {
-    gap: 8px;
-  }
-
-  .name-line {
-    font-size: 24px;
-  }
-
-  .tagline-line {
-    font-size: 16px;
-  }
-
-  .hamburger-menu {
-    padding: 0.4rem;
-    gap: 5px;
-  }
-
-  .hamburger-menu span {
-    width: 28px;
-    height: 2px;
-  }
-
-  /* Gallery */
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .gallery-item:nth-child(4n + 2),
-  .gallery-item:nth-child(4n + 3) {
-    margin-top: 0;
-  }
-
-  .gallery-container {
-    padding: 1.5rem 1rem;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Dan Bauman Photography</title>
+  <link rel="stylesheet" href="styles.css?v=20260308" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1 class="logo-with-line">
+        <a href="index.html" class="logo-link">
+          <span class="text-stack">
+            <span class="name-line">dan bauman</span>
+            <span class="tagline-line">photography</span>
+          </span>
+          <span class="vertical-line"></span>
+        </a>
+      </h1>
+
+      <button class="hamburger-menu" aria-label="Menu" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Optional overlay (only works if your navigation.js toggles it).
+       If you don’t have overlay logic, this div does nothing and is safe. -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+  <main class="contact-page">
+    <div class="contact-container">
+      <section class="contact-info">
+        <h2>Get in Touch</h2>
+        <p class="contact-intro">
+          If you’d like to book a session, inquire about prints, or collaborate,
+          send a message below. Please include a few details (date, location, and the vibe you’re after),
+          and I’ll get back to you soon.
+        </p>
+      </section>
+
+      <section class="contact-form-section" aria-label="Contact form">
+        <h3>Send a Message</h3>
+
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkoqgzdo" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" autocomplete="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email *</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number (optional)</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+          <p id="formStatus" class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="contact-methods" aria-label="Social links">
+        <h3>Social</h3>
+        <div class="social-links">
+          <a href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="navigation.js"></script>
+  <script src="scroll-effects.js"></script>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      statusEl.textContent = "Sending…";
+
+      try {
+        const formData = new FormData(form);
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+          statusEl.textContent = "Thanks! Your message was sent.";
+          form.reset();
+        } else {
+          statusEl.textContent = "Sorry—something went wrong. Please try again.";
+        }
+      } catch (err) {
+        statusEl.textContent = "Network error—please check your connection and try again.";
+      }
+    });
+  </script>
+</body>
+</html>
