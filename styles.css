@@ -818,7 +818,7 @@ h1 {
 .contact-method:hover {
     background: #f0f0f0;
     border-color: #d0d0d0;
-    transform: translateX(5px);
+    transform: none; /* stop the side movement */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
