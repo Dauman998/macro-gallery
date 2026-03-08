@@ -15,12 +15,15 @@ HOW TO SWITCH STYLES:
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
 
 /* =============================================================================
-   ACTIVE STYLE CONFIGURATION
+   THEME TOKENS
+   =============================================================================
+   NOTE: All critical uses of CSS vars include fallbacks (var(--x, <fallback>))
+   so the UI never "disappears" if custom properties fail to resolve.
    ============================================================================= */
 
-/* ACTIVE: Dark Charcoal + Metallic Silver Frames */
 :root {
   --bg-color: #242424;
+
   --frame-border: 2px solid #e8e8e8;
   --frame-bg: linear-gradient(
     135deg,
@@ -46,10 +49,15 @@ HOW TO SWITCH STYLES:
   /* Accent */
   --accent: #3498db;
   --accent-2: #2980b9;
+
+  /* Layout */
+  --header-height: 92px;
+  --header-height-md: 84px;
+  --header-height-sm: 78px;
 }
 
 /* =============================================================================
-   GLOBAL STYLES
+   GLOBAL / BASE
    ============================================================================= */
 
 * {
@@ -65,12 +73,13 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, sans-serif;
+
   background-color: #f9f9f9;
   color: var(--text, #333333);
   line-height: 1.6;
 
   /* IMPORTANT: pushes all pages below fixed header */
-  padding-top: 92px;
+  padding-top: var(--header-height, 92px);
 }
 
 /* =============================================================================
@@ -254,10 +263,13 @@ header h1 {
 .main-nav a {
   display: block;
   padding: 1rem 2rem;
-  color: #333333;
+
+  color: var(--text, #333333);
   text-decoration: none;
+
   font-size: 1.1rem;
   letter-spacing: 1px;
+
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -278,12 +290,12 @@ header h1 {
     rgba(0, 0, 0, 0.08) 70%,
     transparent 70%
   );
-  border-left: 3px solid #333333;
+  border-left: 3px solid rgba(0, 0, 0, 0.65);
   transform: translateX(-15px);
 }
 
 /* =============================================================================
-   GALLERY STYLES
+   GALLERY
    ============================================================================= */
 
 .gallery-container {
@@ -371,7 +383,7 @@ header h1 {
 }
 
 /* =============================================================================
-   HOME PAGE STYLES
+   PAGES
    ============================================================================= */
 
 .home-hero {
@@ -380,10 +392,6 @@ header h1 {
   padding: 4rem 2rem;
 }
 
-/* =============================================================================
-   ABOUT PAGE STYLES
-   ============================================================================= */
-
 .about-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -391,7 +399,7 @@ header h1 {
 }
 
 /* =============================================================================
-   CONTACT PAGE STYLES (single column)
+   CONTACT (single column)
    ============================================================================= */
 
 .contact-page {
@@ -470,7 +478,7 @@ header h1 {
   font-family: "DM Serif Text", serif;
   font-size: 0.82rem;
   letter-spacing: 0.9px;
-  color: #333333;
+  color: var(--text, #333333);
   text-transform: uppercase;
   font-weight: 400;
 }
@@ -481,7 +489,7 @@ header h1 {
   background: #ffffff;
   border: 1px solid #d0d0d0;
   border-radius: 10px;
-  color: #333333;
+  color: var(--text, #333333);
   font-family: inherit;
   font-size: 0.98rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -506,7 +514,11 @@ header h1 {
   padding: 0.95rem 1.25rem;
   border-radius: 12px;
 
-  background: linear-gradient(180deg, var(--accent, #3498db) 0%, var(--accent-2, #2980b9) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--accent, #3498db) 0%,
+    var(--accent-2, #2980b9) 100%
+  );
   color: #ffffff;
 
   border: none;
@@ -533,7 +545,7 @@ header h1 {
 .form-status {
   margin-top: 0.75rem;
   font-size: 0.95rem;
-  color: #333333;
+  color: var(--text, #333333);
   min-height: 1.2em;
 }
 
@@ -555,4 +567,196 @@ header h1 {
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.5px;
-  color: var(--ink,*
+  color: var(--ink, #111111);
+}
+
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  padding: 0.65rem 1.1rem;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease, box-shadow 0.3s ease;
+
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: var(--text, #333333);
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  background: var(--accent, #3498db);
+  color: #ffffff;
+  border-color: var(--accent, #3498db);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(52, 152, 219, 0.25);
+}
+
+/* =============================================================================
+   LIGHTBOX
+   ============================================================================= */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-title {
+  color: #ffffff;
+  font-family: "DM Serif Text", serif;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  body {
+    padding-top: var(--header-height-md, 84px);
+  }
+
+  header {
+    padding: 0.8rem 0.65rem;
+  }
+
+  .vertical-line {
+    height: 70px;
+  }
+
+  .name-line {
+    font-size: 26px;
+  }
+
+  .tagline-line {
+    font-size: 17px;
+  }
+
+  .hamburger-menu {
+    padding: 0.45rem;
+    gap: 6px;
+  }
+
+  .hamburger-menu span {
+    width: 30px;
+    height: 2px;
+  }
+
+  .hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+  .hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .main-nav {
+    width: 300px;
+    padding-top: 108px;
+  }
+
+  .contact-page {
+    padding: 2.6rem 1rem 2.5rem;
+  }
+
+  .form-group textarea {
+    min-height: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: var(--header-height-sm, 78px);
+  }
+
+  header {
+    padding: 0.75rem 0.6rem;
+  }
+
+  .vertical-line {
+    height: 62px;
+  }
+
+  .name-line {
+    font-size: 24px;
+  }
+
+  .tagline-line {
+    font-size: 16px;
+  }
+
+  .hamburger-menu {
+    padding: 0.4rem;
+    gap: 5px;
+  }
+
+  .hamburger-menu span {
+    width: 28px;
+    height: 2px;
+  }
+
+  .main-nav {
+    width: 280px;
+  }
+}
