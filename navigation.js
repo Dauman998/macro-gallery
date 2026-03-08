@@ -16,7 +16,10 @@ function getOrCreateOverlay() {
 }
 
 function isMenuOpen() {
-  return hamburger?.classList.contains("active") && mainNav?.classList.contains("active");
+  return (
+    hamburger?.classList.contains("active") &&
+    mainNav?.classList.contains("active")
+  );
 }
 
 function openMenu(overlay) {
@@ -45,15 +48,12 @@ if (hamburger && mainNav) {
     else openMenu(overlay);
   });
 
-  // Close menu when clicking overlay
   overlay.addEventListener("click", () => closeMenu(overlay));
 
-  // Close when clicking a link
   mainNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => closeMenu(overlay));
   });
 
-  // Close when clicking outside menu/hamburger
   document.addEventListener("click", (e) => {
     if (!isMenuOpen()) return;
 
@@ -63,7 +63,6 @@ if (hamburger && mainNav) {
     if (!clickedInsideNav && !clickedHamburger) closeMenu(overlay);
   });
 
-  // Close on ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && isMenuOpen()) closeMenu(overlay);
   });
