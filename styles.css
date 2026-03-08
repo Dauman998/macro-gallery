@@ -1,405 +1,7 @@
-/* 
-=============================================================================
-PHOTOGRAPHY PORTFOLIO - STYLE COMBINATIONS
-=============================================================================
-
-HOW TO SWITCH STYLES:
-1. Find the "ACTIVE STYLE CONFIGURATION" section below
-2. Uncomment ONE of the combinations (remove the /* and */)
-3. Make sure all other combinations are commented out
-4. Save the file and refresh your browser
-=============================================================================
-*/
-
-/* Google Fonts Import - DM Serif Text */
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
-
 /* =============================================================================
-   THEME TOKENS
-   =============================================================================
-   NOTE: All critical uses of CSS vars include fallbacks (var(--x, <fallback>))
-   so the UI never "disappears" if custom properties fail to resolve.
-   ============================================================================= */
-
-:root {
-  --bg-color: #242424;
-
-  --frame-border: 2px solid #e8e8e8;
-  --frame-bg: linear-gradient(
-    135deg,
-    #c0c0c0 0%,
-    #f0f0f0 25%,
-    #c0c0c0 50%,
-    #f0f0f0 75%,
-    #c0c0c0 100%
-  );
-  --frame-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.4),
-    inset 0 1px 3px rgba(255, 255, 255, 0.8),
-    inset 0 -1px 3px rgba(0, 0, 0, 0.3);
-
-  /* Site neutrals */
-  --ink: #111111;
-  --text: #333333;
-  --muted: #555555;
-  --paper: #ffffff;
-  --panel: #f8f8f8;
-  --border: #e0e0e0;
-
-  /* Accent */
-  --accent: #3498db;
-  --accent-2: #2980b9;
-
-  /* Layout */
-  --header-height: 92px;
-  --header-height-md: 84px;
-  --header-height-sm: 78px;
-}
-
-/* =============================================================================
-   GLOBAL / BASE
-   ============================================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, sans-serif;
-
-  background-color: #f9f9f9;
-  color: var(--text, #333333);
-  line-height: 1.6;
-
-  /* IMPORTANT: pushes all pages below fixed header */
-  padding-top: var(--header-height, 92px);
-}
-
-/* =============================================================================
-   HEADER + NAVIGATION (single source of truth)
-   ============================================================================= */
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-
-  background-color: #f5f5f5;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-  /* closer to screen edges */
-  padding: 0.75rem 0.65rem;
-
-  transition: transform 0.3s ease;
-}
-
-header.header-hidden {
-  transform: translateY(-100%);
-}
-
-.header-content {
-  max-width: 2200px;
-  margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header h1 {
-  margin: 0;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-/* Logo block */
-.logo-with-line {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.logo-link {
-  display: flex; /* IMPORTANT: makes vertical-line sit next to text */
-  align-items: center;
-  gap: 0.85rem;
-
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.logo-link:hover {
-  opacity: 0.85;
-}
-
-.vertical-line {
-  width: 3px;
-  height: clamp(68px, 4.2vw, 108px);
-  background-color: var(--ink, #111111);
-  flex-shrink: 0;
-  display: block;
-}
-
-.text-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-
-.name-line {
-  font-size: clamp(28px, 1.5vw, 40px);
-  font-weight: 400;
-  font-family: "DM Serif Text", serif;
-  color: var(--ink, #111111);
-  line-height: 1;
-}
-
-.tagline-line {
-  font-size: clamp(18px, 1.05vw, 28px);
-  font-weight: 400;
-  font-family: "DM Serif Text", serif;
-  color: var(--ink, #111111);
-  line-height: 1;
-  padding-right: 1px;
-}
-
-/* Hamburger */
-.hamburger-menu {
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  padding: 0.55rem;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-
-  transition: transform 0.3s ease;
-}
-
-.hamburger-menu span {
-  width: 38px;
-  height: 3px;
-  background-color: var(--ink, #111111);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.hamburger-menu:hover {
-  transform: scale(1.06);
-}
-
-.hamburger-menu.active {
-  z-index: 9999;
-}
-
-.hamburger-menu.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
-}
-.hamburger-menu.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger-menu.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
-}
-
-/* Overlay + nav */
-.menu-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(249, 249, 249, 0.42);
-  backdrop-filter: blur(2px);
-  z-index: 998;
-}
-
-.menu-overlay.active {
-  display: block;
-}
-
-.main-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-
-  width: 320px;
-  padding-top: 112px;
-
-  background-color: #f9f9f9;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
-
-  z-index: 999;
-}
-
-.main-nav.active {
-  display: block;
-}
-
-.main-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.main-nav li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.main-nav a {
-  display: block;
-  padding: 1rem 2rem;
-
-  color: var(--text, #333333);
-  text-decoration: none;
-
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.main-nav a:hover {
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.05) 0%,
-    rgba(0, 0, 0, 0.05) 70%,
-    transparent 70%
-  );
-  transform: translateX(-15px);
-}
-
-.main-nav a.active {
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.08) 0%,
-    rgba(0, 0, 0, 0.08) 70%,
-    transparent 70%
-  );
-  border-left: 3px solid rgba(0, 0, 0, 0.65);
-  transform: translateX(-15px);
-}
-
-/* =============================================================================
-   GALLERY
-   ============================================================================= */
-
-.gallery-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 5rem 2rem 3rem;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  column-gap: 3rem;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: var(--frame-bg);
-  border: var(--frame-border);
-  box-shadow: var(--frame-shadow);
-  transition: all 0.4s ease;
-  aspect-ratio: 1 / 1;
-}
-
-.gallery-item:nth-child(4n + 2),
-.gallery-item:nth-child(4n + 3) {
-  margin-top: 4rem;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--frame-shadow), 0 12px 30px rgba(0, 0, 0, 0.5);
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1);
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    transparent 100%
-  );
-
-  padding: 1.5rem 1rem 1rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.gallery-item:hover .overlay {
-  opacity: 1;
-  visibility: visible;
-}
-
-.photo-title {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: center;
-  letter-spacing: 1px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.gallery-item:hover .photo-title {
-  opacity: 1;
-}
-
-/* =============================================================================
-   PAGES
-   ============================================================================= */
-
-.home-hero {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-}
-
-.about-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 5rem 2rem 3rem;
-}/* =============================================================================
    CONTACT
-   - Left card: Get in Touch heading, paragraph, social icons
-   - Right card: form with full-width fields, centered phone
+   - Left card: form
+   - Right card: Get in Touch heading, paragraph, social icons
    - Desktop: 2-column side by side
    - Mobile: stacked
    ============================================================================= */
@@ -414,50 +16,13 @@ header h1 {
 
 .contact-container {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 1.5rem;
   align-items: start;
+  margin-top: 2rem; /* extra insurance against header hug */
 }
 
-/* Left card */
-.contact-info {
-  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
-  border: 1px solid var(--border, #e0e0e0);
-  border-radius: 12px;
-  padding: 1.8rem 1.5rem 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-info h2 {
-  font-family: "DM Serif Text", serif;
-  font-size: clamp(2rem, 2.4vw, 2.8rem);
-  font-weight: 400;
-  margin: 0;
-  letter-spacing: 0.5px;
-  color: var(--ink, #111111);
-  line-height: 1.15;
-}
-
-.contact-info p {
-  font-size: 0.97rem;
-  line-height: 1.65;
-  color: var(--text, #444444);
-  margin: 0;
-}
-
-/* Social icons in left card */
-.contact-social {
-  margin-top: auto;
-  padding-top: 0.5rem;
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-}
-
-/* Right card */
+/* Left card: form */
 .contact-form-section {
   background: #f8f8f8;
   border-radius: 14px;
@@ -486,9 +51,9 @@ header h1 {
   flex-direction: column;
 }
 
-/* Phone: centered at ~55% width */
+/* Phone: centered at ~60% width */
 .form-group--center {
-  width: 55%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -563,11 +128,48 @@ header h1 {
   min-height: 1.2em;
 }
 
-/* Social icon shared styles */
+/* Right card: Get in Touch */
+.contact-info {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-info h2 {
+  font-family: "DM Serif Text", serif;
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.4px;
+  color: #2a2a2a;
+  line-height: 1.2;
+}
+
+.contact-info p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #555555;
+  margin: 0;
+}
+
+/* Social icons */
+.contact-social {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
 .social-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -584,8 +186,8 @@ header h1 {
 }
 
 .social-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   fill: #ffffff;
 }
 
@@ -608,101 +210,11 @@ header h1 {
 @media (max-width: 760px) {
   .contact-container {
     grid-template-columns: 1fr;
+    margin-top: 1rem;
   }
 
   .form-group--center {
     width: 100%;
     margin: 0;
-  }
-}
-/* =============================================================================
-   RESPONSIVE
-   ============================================================================= */
-
-@media (max-width: 768px) {
-  body {
-    padding-top: var(--header-height-md, 84px);
-  }
-
-  header {
-    padding: 0.8rem 0.65rem;
-  }
-
-  .vertical-line {
-    height: 70px;
-  }
-
-  .name-line {
-    font-size: 26px;
-  }
-
-  .tagline-line {
-    font-size: 17px;
-  }
-
-  .hamburger-menu {
-    padding: 0.45rem;
-    gap: 6px;
-  }
-
-  .hamburger-menu span {
-    width: 30px;
-    height: 2px;
-  }
-
-  .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
-  }
-  .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-  }
-
-  .main-nav {
-    width: 300px;
-    padding-top: 108px;
-  }
-
-  .contact-page {
-    padding: 2.6rem 1rem 2.5rem;
-  }
-
-  .form-group textarea {
-    min-height: 110px;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding-top: var(--header-height-sm, 78px);
-  }
-
-  header {
-    padding: 0.75rem 0.6rem;
-  }
-
-  .vertical-line {
-    height: 62px;
-  }
-
-  .name-line {
-    font-size: 24px;
-  }
-
-  .tagline-line {
-    font-size: 16px;
-  }
-
-  .hamburger-menu {
-    padding: 0.4rem;
-    gap: 5px;
-  }
-
-  .hamburger-menu span {
-    width: 28px;
-    height: 2px;
-  }
-
-  .main-nav {
-    width: 280px;
   }
 }
