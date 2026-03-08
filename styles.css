@@ -408,7 +408,7 @@ header h1 {
   margin: 0 auto;
 
   /* separation from header + comfy sides */
-  padding: 1.25rem 1rem 2rem;
+  padding: 2rem 1rem 2rem;
 
   background-color: #ffffff;
   color: var(--text, #333333);
@@ -609,12 +609,7 @@ header h1 {
    ============================================================================= */
 @media (min-width: 1000px) {
   .contact-container {
-    max-width: 980px;
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 2rem;
-    align-items: start;
-  }
+    max-width: 980px;}
 
   .contact-info {
     grid-column: 1;
