@@ -445,8 +445,6 @@ header h1 {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--muted, #555555);
-
-  /* helps reduce perceived gap above Social when paragraph wraps */
   margin-bottom: 0;
 }
 
@@ -619,17 +617,28 @@ header h1 {
     align-items: start;
   }
 
+  /* Left column: intro */
   .contact-info {
     grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    margin: 0;
   }
 
-  .contact-methods {
-    grid-column: 1;
-    margin-top: 0.1rem; /* reduced further to remove the big gap */
-  }
-
+  /* Right column: form spans both rows (prevents the “blank gap” effect) */
   .contact-form-section {
     grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+    margin: 0;
+  }
+
+  /* Left column: social directly under intro */
+  .contact-methods {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    margin-top: 0.75rem;
   }
 
   .contact-form {
