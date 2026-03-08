@@ -748,3 +748,12 @@ header h1 {
     width: 280px;
   }
 }
+
+/* HOTFIX: something is overriding these to transparent */
+.hamburger-menu span {
+  background-color: var(--ink) !important;
+}
+
+.vertical-line {
+  background-color: var(--ink) !important;
+}
