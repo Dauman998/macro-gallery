@@ -398,18 +398,12 @@ header h1 {
   padding: 5rem 2rem 3rem;
 }/* =============================================================================
    CONTACT
-   - No intro card
-   - Name: full width
-   - Email: full width (below name)
-   - Phone: left half
-   - Message: full width, taller
-   - Submit / social: full width
    ============================================================================= */
 
 .contact-page {
   max-width: 980px;
   margin: 0 auto;
-  padding: 2rem 1rem 2rem;
+  padding: 3.5rem 1rem 2rem;
   background-color: #ffffff;
   color: var(--text, #333333);
 }
@@ -422,7 +416,6 @@ header h1 {
   gap: 1rem;
 }
 
-/* Form card */
 .contact-form-section {
   background: #f8f8f8;
   border-radius: 14px;
@@ -440,7 +433,6 @@ header h1 {
   color: var(--ink, #111111);
 }
 
-/* 2-column grid at all sizes; mobile collapses below */
 .contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -452,12 +444,10 @@ header h1 {
   flex-direction: column;
 }
 
-/* Full-width: Name, Email, Message, Submit, Social */
 .form-group--full {
   grid-column: 1 / -1;
 }
 
-/* Half-width: Phone sits in left column only */
 .form-group--half {
   grid-column: 1 / 2;
 }
@@ -586,12 +576,10 @@ header h1 {
   );
 }
 
-/* Collapse to single column on narrow mobile */
 @media (max-width: 480px) {
   .contact-form {
     grid-template-columns: 1fr;
   }
-
   .form-group--half {
     grid-column: 1 / -1;
   }
