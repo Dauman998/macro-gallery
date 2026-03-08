@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Dan Bauman Photography</title>
 
-  <!-- bump version to force refresh -->
-  <link rel="stylesheet" href="../styles.css?v=20260308-contact-icons-1" />
+  <!-- Bump version to force-refresh CSS -->
+  <link rel="stylesheet" href="../styles.css?v=20260308-icons-small-1" />
 </head>
 <body>
   <header>
@@ -40,8 +40,14 @@
 
   <main class="contact-page">
     <div class="contact-container">
+      <!-- Intro card (kept as before, but no paragraph) -->
+      <section class="contact-info">
+        <h2>Get in Touch</h2>
+      </section>
+
+      <!-- Form card (kept exactly like your original structure) -->
       <section class="contact-form-section" aria-label="Contact form">
-        <h2 class="contact-title">Get in Touch</h2>
+        <h3>Send a Message</h3>
 
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkoqgzdo" method="POST">
           <div class="form-group">
@@ -55,29 +61,27 @@
           </div>
 
           <div class="form-group">
-            <label for="phone">Phone Number (optional)</label>
+            <label for="phone">Phone Number </label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" />
           </div>
 
           <div class="form-group">
             <label for="message">Message *</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            <textarea id="message" name="message" rows="3" required></textarea>
           </div>
 
           <button type="submit">Send Message</button>
           <p id="formStatus" class="form-status" aria-live="polite"></p>
 
-          <!-- NEW: social icons under submit -->
+          <!-- Social icons UNDER the submit button, still in the same card -->
           <div class="contact-social" aria-label="Social links">
-            <a class="social-icon" href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <!-- Instagram icon (inline SVG) -->
+            <a class="social-icon instagram" href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
                 <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm10.0 1.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
               </svg>
             </a>
 
-            <a class="social-icon" href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <!-- Facebook icon (inline SVG) -->
+            <a class="social-icon facebook" href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
                 <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.6-1.5H16.7V5c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5V11H7.2v3h2.6v8h3.7Z"/>
               </svg>
