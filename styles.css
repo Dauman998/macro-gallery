@@ -694,6 +694,20 @@ header h1 {
   /* existing values… */
   padding-top: 3.0rem; /* increases spacing under the header */
 }
+/* Contact form submit button: force readable contrast */
+.contact-form button[type="submit"] {
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #ffffff;
+}
+
+.contact-form button[type="submit"]:hover {
+  background: linear-gradient(180deg, var(--accent-2) 0%, var(--accent-2) 100%);
+  color: #ffffff;
+}
+
+.contact-form button[type="submit"]:active {
+  color: #ffffff;
+}
 
 /* =============================================================================
    LIGHTBOX STYLES
