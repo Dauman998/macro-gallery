@@ -1,126 +1,978 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Dan Bauman Photography</title>
-  <link rel="stylesheet" href="styles.css?v=20260308" />
-</head>
-<body>
-  <header>
-    <div class="header-content">
-      <h1 class="logo-with-line">
-        <a href="index.html" class="logo-link">
-          <span class="text-stack">
-            <span class="name-line">dan bauman</span>
-            <span class="tagline-line">photography</span>
-          </span>
-          <span class="vertical-line"></span>
-        </a>
-      </h1>
+/* 
+=============================================================================
+PHOTOGRAPHY PORTFOLIO - STYLE COMBINATIONS
+=============================================================================
 
-      <button class="hamburger-menu" aria-label="Menu" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+HOW TO SWITCH STYLES:
+1. Find the "ACTIVE STYLE CONFIGURATION" section below
+2. Uncomment ONE of the combinations (remove the /* and */)
+3. Make sure all other combinations are commented out
+4. Save the file and refresh your browser
+=============================================================================
+*/
 
-    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Portfolio</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+/* Google Fonts Import - DM Serif Text */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
 
-  <!-- Optional overlay (only works if your navigation.js toggles it).
-       If you don’t have overlay logic, this div does nothing and is safe. -->
-  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+/* =============================================================================
+   ACTIVE STYLE CONFIGURATION
+   ============================================================================= */
 
-  <main class="contact-page">
-    <div class="contact-container">
-      <section class="contact-info">
-        <h2>Get in Touch</h2>
-        <p class="contact-intro">
-          If you’d like to book a session, inquire about prints, or collaborate,
-          send a message below. Please include a few details (date, location, and the vibe you’re after),
-          and I’ll get back to you soon.
-        </p>
-      </section>
+/* ACTIVE: Dark Charcoal + Metallic Silver Frames */
+:root {
+  --bg-color: #242424;
+  --frame-border: 2px solid #e8e8e8;
+  --frame-bg: linear-gradient(
+    135deg,
+    #c0c0c0 0%,
+    #f0f0f0 25%,
+    #c0c0c0 50%,
+    #f0f0f0 75%,
+    #c0c0c0 100%
+  );
+  --frame-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 1px 3px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 3px rgba(0, 0, 0, 0.3);
 
-      <section class="contact-form-section" aria-label="Contact form">
-        <h3>Send a Message</h3>
+  /* Site neutrals */
+  --ink: #111111;
+  --text: #333333;
+  --muted: #555555;
+  --paper: #ffffff;
+  --panel: #f8f8f8;
+  --panel-2: #f2f2f2;
+  --border: #e0e0e0;
 
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkoqgzdo" method="POST">
-          <div class="form-group">
-            <label for="name">Your Name *</label>
-            <input type="text" id="name" name="name" autocomplete="name" required />
-          </div>
+  /* Accent */
+  --accent: #3498db;
+  --accent-2: #2980b9;
+}
 
-          <div class="form-group">
-            <label for="email">Your Email *</label>
-            <input type="email" id="email" name="email" autocomplete="email" required />
-          </div>
+/* =============================================================================
+   GLOBAL STYLES
+   ============================================================================= */
 
-          <div class="form-group">
-            <label for="phone">Phone Number (optional)</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" />
-          </div>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-          <div class="form-group">
-            <label for="message">Message *</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
-          </div>
+html {
+  /* nicer scrolling when jumping around */
+  scroll-behavior: smooth;
+}
 
-          <button type="submit">Send Message</button>
-          <p id="formStatus" class="form-status" aria-live="polite"></p>
-        </form>
-      </section>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+  background-color: #f9f9f9;
+  color: var(--text);
+  line-height: 1.6;
 
-      <section class="contact-methods" aria-label="Social links">
-        <h3>Social</h3>
-        <div class="social-links">
-          <a href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer">Facebook</a>
-        </div>
-      </section>
-    </div>
-  </main>
+  /* IMPORTANT: pushes all pages below fixed header */
+  padding-top: 88px;
+}
 
-  <script src="navigation.js"></script>
-  <script src="scroll-effects.js"></script>
+/* =============================================================================
+   HEADER + NAVIGATION (single source of truth)
+   ============================================================================= */
 
-  <script>
-    const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('formStatus');
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  background-color: #f5f5f5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-      statusEl.textContent = "Sending…";
+  /* CLOSER TO EDGES */
+  padding: 0.75rem 0.65rem;
 
-      try {
-        const formData = new FormData(form);
+  transition: transform 0.3s ease;
+}
 
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { "Accept": "application/json" }
-        });
+/* used by scroll-effects.js */
+header.header-hidden {
+  transform: translateY(-100%);
+}
 
-        if (response.ok) {
-          statusEl.textContent = "Thanks! Your message was sent.";
-          form.reset();
-        } else {
-          statusEl.textContent = "Sorry—something went wrong. Please try again.";
-        }
-      } catch (err) {
-        statusEl.textContent = "Network error—please check your connection and try again.";
-      }
-    });
-  </script>
-</body>
-</html>
+.header-content {
+  /* Wider so logo + hamburger sit closer to margins on large screens */
+  max-width: 2000px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Logo */
+.logo-link {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.85;
+}
+
+.logo-with-line {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.logo-with-line .logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem; /* slightly tighter for a cleaner mark */
+}
+
+.vertical-line {
+  width: 3px;
+  height: clamp(68px, 4.2vw, 108px);
+  background-color: var(--ink);
+  flex-shrink: 0;
+}
+
+.text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.name-line {
+  font-size: clamp(28px, 1.5vw, 40px);
+  font-weight: 400;
+  font-family: "DM Serif Text", serif;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.tagline-line {
+  font-size: clamp(18px, 1.05vw, 28px);
+  font-weight: 400;
+  font-family: "DM Serif Text", serif;
+  color: var(--ink);
+  line-height: 1;
+  padding-right: 1px;
+}
+
+/* Hamburger (bigger on desktop) */
+.hamburger-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  padding: 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  transition: transform 0.3s ease;
+}
+
+.hamburger-menu span {
+  width: 38px;
+  height: 3px;
+  background-color: var(--ink);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-menu:hover {
+  transform: scale(1.06);
+}
+
+.hamburger-menu.active {
+  z-index: 9999;
+}
+
+/* X animation */
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Menu overlay + slide-in nav */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(249, 249, 249, 0.42);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+.main-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 320px;
+  padding-top: 112px;
+
+  background-color: #f9f9f9;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
+
+  z-index: 999;
+}
+
+.main-nav.active {
+  display: block;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.main-nav a {
+  display: block;
+  padding: 1rem 2rem;
+
+  color: #333333;
+  text-decoration: none;
+
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.main-nav a:hover {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.05) 70%,
+    transparent 70%
+  );
+  transform: translateX(-15px);
+}
+
+.main-nav a.active {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.08) 70%,
+    transparent 70%
+  );
+  border-left: 3px solid #333333;
+  transform: translateX(-15px);
+}
+
+/* =============================================================================
+   GALLERY STYLES
+   ============================================================================= */
+
+.gallery-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  column-gap: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--frame-bg);
+  border: var(--frame-border);
+  box-shadow: var(--frame-shadow);
+  transition: all 0.4s ease;
+  aspect-ratio: 1 / 1;
+}
+
+/* Staggered effect */
+.gallery-item:nth-child(4n + 2),
+.gallery-item:nth-child(4n + 3) {
+  margin-top: 4rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--frame-shadow), 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    transparent 100%
+  );
+
+  padding: 1.5rem 1rem 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.photo-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .photo-title {
+  opacity: 1;
+}
+
+/* =============================================================================
+   HOME PAGE STYLES
+   ============================================================================= */
+
+.home-hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 2px solid #ffffff;
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: var(--bg-color);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #ffffff;
+  color: var(--bg-color);
+}
+
+.featured-work {
+  margin-top: 4rem;
+}
+
+.featured-work h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* =============================================================================
+   ABOUT PAGE STYLES
+   ============================================================================= */
+
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* =============================================================================
+   CONTACT PAGE STYLES (SINGLE COLUMN — CREATIVE, CLEAN)
+   - Form is the primary contact method
+   - Social buttons underneath the form
+   ============================================================================= */
+
+.contact-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.2rem 1rem 3rem;
+  background-color: #ffffff;
+  color: var(--text);
+}
+
+/* A centered stack layout (single column) */
+.contact-container {
+  max-width: 760px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* “Intro card” */
+.contact-info {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.contact-info h2 {
+  font-family: "DM Serif Text", serif;
+  font-size: clamp(2.0rem, 1.4vw, 2.6rem);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+.contact-intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Form “hero card” */
+.contact-form-section {
+  background: #f8f8f8;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 1.6rem 1.6rem 1.2rem;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.06);
+}
+
+.contact-form-section h3 {
+  font-family: "DM Serif Text", serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-family: "DM Serif Text", serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.9px;
+  color: #333333;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  color: #333333;
+  font-family: inherit;
+  font-size: 0.98rem;
+
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.08s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.12);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+.contact-form button[type="submit"] {
+  cursor: pointer;
+  margin-top: 0.25rem;
+
+  padding: 0.95rem 1.25rem;
+  border-radius: 12px;
+
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+  border: none;
+  color: #ffffff;
+
+  font-family: "DM Serif Text", serif;
+  font-size: 1rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+
+  transition: transform 0.12s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 10px 28px rgba(52, 152, 219, 0.28);
+}
+
+.contact-form button[type="submit"]:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+  box-shadow: 0 14px 34px rgba(52, 152, 219, 0.35);
+}
+
+.contact-form button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #333333;
+  min-height: 1.2em;
+}
+
+/* Social underneath, centered */
+.contact-methods {
+  /* We keep the class name so your existing HTML doesn’t break,
+     but this is now a “social footer” area. */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.15rem 1.3rem;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.contact-methods h3 {
+  font-family: "DM Serif Text", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+/* Social buttons */
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  padding: 0.65rem 1.1rem;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease, box-shadow 0.3s ease;
+
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: #333333;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(52, 152, 219, 0.25);
+}
+
+/* =============================================================================
+   LIGHTBOX STYLES
+   ============================================================================= */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-title {
+  color: #ffffff;
+  font-family: "DM Serif Text", serif;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+/* =============================================================================
+   BACK-TO-TOP BUTTON
+   ============================================================================= */
+
+.back-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+
+  width: 50px;
+  height: 50px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #111111;
+  border: 2px solid #111111;
+  border-radius: 50%;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px);
+  transition: all 0.3s ease;
+
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: #111111;
+  color: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN (site-wide)
+   ============================================================================= */
+
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    column-gap: 2.5rem;
+  }
+
+  .gallery-item:nth-child(4n + 2),
+  .gallery-item:nth-child(4n + 3) {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 84px;
+  }
+
+  header {
+    padding: 0.8rem 0.65rem;
+  }
+
+  .vertical-line {
+    height: 70px;
+  }
+
+  .text-stack {
+    gap: 10px;
+  }
+
+  .name-line {
+    font-size: 26px;
+  }
+
+  .tagline-line {
+    font-size: 17px;
+  }
+
+  .hamburger-menu {
+    padding: 0.45rem;
+    gap: 6px;
+  }
+
+  .hamburger-menu span {
+    width: 30px;
+    height: 2px;
+  }
+
+  .hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .main-nav {
+    width: 300px;
+    padding-top: 108px;
+  }
+
+  /* Gallery */
+  .gallery-container {
+    padding: 2rem 1rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    column-gap: 1.5rem;
+  }
+
+  .gallery-item:nth-child(4n + 2),
+  .gallery-item:nth-child(4n + 3) {
+    margin-top: 2rem;
+  }
+
+  /* Contact */
+  .contact-page {
+    padding: 1.7rem 1rem 2.5rem;
+  }
+
+  .contact-container {
+    gap: 1rem;
+  }
+
+  .form-group textarea {
+    min-height: 110px;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    right: 20px;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 78px;
+  }
+
+  header {
+    padding: 0.75rem 0.6rem;
+  }
+
+  .vertical-line {
+    height: 62px;
+  }
+
+  .text-stack {
+    gap: 8px;
+  }
+
+  .name-line {
+    font-size: 24px;
+  }
+
+  .tagline-line {
+    font-size: 16px;
+  }
+
+  .hamburger-menu {
+    padding: 0.4rem;
+    gap: 5px;
+  }
+
+  .hamburger-menu span {
+    width: 28px;
+    height: 2px;
+  }
+
+  .main-nav {
+    width: 280px;
+  }
+
+  /* Gallery */
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .gallery-item:nth-child(4n + 2),
+  .gallery-item:nth-child(4n + 3) {
+    margin-top: 0;
+  }
+
+  .gallery-container {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    right: 15px;
+    bottom: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
