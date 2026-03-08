@@ -690,6 +690,10 @@ header h1 {
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(52, 152, 219, 0.25);
 }
+.contact-page {
+  /* existing values… */
+  padding-top: 3.0rem; /* increases spacing under the header */
+}
 
 /* =============================================================================
    LIGHTBOX STYLES
