@@ -1,35 +1,70 @@
-// Navigation Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const mainNav = document.getElementById('mainNav');
+// Navigation Menu Toggle (robust + no duplicate overlays)
+const hamburger = document.getElementById("hamburger");
+const mainNav = document.getElementById("mainNav");
 
-// Create and add menu overlay
-const menuOverlay = document.createElement('div');
-menuOverlay.className = 'menu-overlay';
-menuOverlay.id = 'menuOverlay';
-document.body.appendChild(menuOverlay);
+function getOrCreateOverlay() {
+  let overlay = document.getElementById("menuOverlay");
+
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    overlay.id = "menuOverlay";
+    document.body.appendChild(overlay);
+  }
+
+  return overlay;
+}
+
+function isMenuOpen() {
+  return hamburger?.classList.contains("active") && mainNav?.classList.contains("active");
+}
+
+function openMenu(overlay) {
+  hamburger.classList.add("active");
+  mainNav.classList.add("active");
+  overlay.classList.add("active");
+  overlay.setAttribute("aria-hidden", "false");
+}
+
+function closeMenu(overlay) {
+  hamburger.classList.remove("active");
+  mainNav.classList.remove("active");
+  overlay.classList.remove("active");
+  overlay.setAttribute("aria-hidden", "true");
+}
 
 if (hamburger && mainNav) {
-    hamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('active');
-        mainNav.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-    });
-    
-    // Close menu when clicking overlay
-    menuOverlay.addEventListener('click', function() {
-        hamburger.classList.remove('active');
-        mainNav.classList.remove('active');
-        menuOverlay.classList.remove('active');
-    });
-    
-    // Close menu when clicking a link
-    const navLinks = mainNav.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            mainNav.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        });
-    });
+  const overlay = getOrCreateOverlay();
+  overlay.setAttribute("aria-hidden", "true");
+
+  hamburger.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (isMenuOpen()) closeMenu(overlay);
+    else openMenu(overlay);
+  });
+
+  // Close menu when clicking overlay
+  overlay.addEventListener("click", () => closeMenu(overlay));
+
+  // Close when clicking a link
+  mainNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => closeMenu(overlay));
+  });
+
+  // Close when clicking outside menu/hamburger
+  document.addEventListener("click", (e) => {
+    if (!isMenuOpen()) return;
+
+    const clickedInsideNav = mainNav.contains(e.target);
+    const clickedHamburger = hamburger.contains(e.target);
+
+    if (!clickedInsideNav && !clickedHamburger) closeMenu(overlay);
+  });
+
+  // Close on ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isMenuOpen()) closeMenu(overlay);
+  });
 }
