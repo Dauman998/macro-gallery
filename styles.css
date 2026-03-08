@@ -41,7 +41,6 @@ HOW TO SWITCH STYLES:
   --muted: #555555;
   --paper: #ffffff;
   --panel: #f8f8f8;
-  --panel-2: #f2f2f2;
   --border: #e0e0e0;
 
   /* Accent */
@@ -60,7 +59,6 @@ HOW TO SWITCH STYLES:
 }
 
 html {
-  /* nicer scrolling when jumping around */
   scroll-behavior: smooth;
 }
 
@@ -72,7 +70,7 @@ body {
   line-height: 1.6;
 
   /* IMPORTANT: pushes all pages below fixed header */
-  padding-top: 88px;
+  padding-top: 92px;
 }
 
 /* =============================================================================
@@ -89,20 +87,18 @@ header {
   background-color: #f5f5f5;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  /* CLOSER TO EDGES */
+  /* closer to screen edges */
   padding: 0.75rem 0.65rem;
 
   transition: transform 0.3s ease;
 }
 
-/* used by scroll-effects.js */
 header.header-hidden {
   transform: translateY(-100%);
 }
 
 .header-content {
-  /* Wider so logo + hamburger sit closer to margins on large screens */
-  max-width: 2000px;
+  max-width: 2200px;
   margin: 0 auto;
 
   display: flex;
@@ -118,8 +114,18 @@ header h1 {
   text-transform: none;
 }
 
-/* Logo */
+/* Logo block */
+.logo-with-line {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
 .logo-link {
+  display: flex;              /* IMPORTANT: makes vertical-line sit next to text */
+  align-items: center;
+  gap: 0.85rem;
+
   color: inherit;
   text-decoration: none;
   transition: opacity 0.3s ease;
@@ -129,23 +135,12 @@ header h1 {
   opacity: 0.85;
 }
 
-.logo-with-line {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.logo-with-line .logo-link {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem; /* slightly tighter for a cleaner mark */
-}
-
 .vertical-line {
   width: 3px;
   height: clamp(68px, 4.2vw, 108px);
   background-color: var(--ink);
   flex-shrink: 0;
+  display: block;
 }
 
 .text-stack {
@@ -172,7 +167,7 @@ header h1 {
   padding-right: 1px;
 }
 
-/* Hamburger (bigger on desktop) */
+/* Hamburger */
 .hamburger-menu {
   background: none;
   border: none;
@@ -201,7 +196,6 @@ header h1 {
   z-index: 9999;
 }
 
-/* X animation */
 .hamburger-menu.active span:nth-child(1) {
   transform: rotate(45deg) translate(8px, 8px);
 }
@@ -212,7 +206,7 @@ header h1 {
   transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Menu overlay + slide-in nav */
+/* Overlay + nav */
 .menu-overlay {
   display: none;
   position: fixed;
@@ -260,13 +254,10 @@ header h1 {
 .main-nav a {
   display: block;
   padding: 1rem 2rem;
-
   color: #333333;
   text-decoration: none;
-
   font-size: 1.1rem;
   letter-spacing: 1px;
-
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -319,7 +310,6 @@ header h1 {
   aspect-ratio: 1 / 1;
 }
 
-/* Staggered effect */
 .gallery-item:nth-child(4n + 2),
 .gallery-item:nth-child(4n + 3) {
   margin-top: 4rem;
@@ -342,7 +332,6 @@ header h1 {
   transform: scale(1.1);
 }
 
-/* Overlay */
 .overlay {
   position: absolute;
   bottom: 0;
@@ -391,80 +380,6 @@ header h1 {
   padding: 4rem 2rem;
 }
 
-.hero-content {
-  text-align: center;
-  padding: 3rem 0;
-}
-
-.hero-title {
-  font-size: 3rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  font-weight: 300;
-  opacity: 0.9;
-  margin-bottom: 2rem;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  border: 2px solid #ffffff;
-}
-
-.btn-primary {
-  background-color: #ffffff;
-  color: var(--bg-color);
-}
-
-.btn-primary:hover {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-.btn-secondary:hover {
-  background-color: #ffffff;
-  color: var(--bg-color);
-}
-
-.featured-work {
-  margin-top: 4rem;
-}
-
-.featured-work h3 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 300;
-  margin-bottom: 2rem;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
 /* =============================================================================
    ABOUT PAGE STYLES
    ============================================================================= */
@@ -475,28 +390,21 @@ header h1 {
   padding: 5rem 2rem 3rem;
 }
 
-.about-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  align-items: start;
-}
-
 /* =============================================================================
-   CONTACT PAGE STYLES (SINGLE COLUMN — CREATIVE, CLEAN)
-   - Form is the primary contact method
-   - Social buttons underneath the form
+   CONTACT PAGE STYLES (single column)
    ============================================================================= */
 
 .contact-page {
   max-width: 980px;
   margin: 0 auto;
-  padding: 2.2rem 1rem 3rem;
+
+  /* extra separation from header + comfy sides */
+  padding: 3rem 1rem 3rem;
+
   background-color: #ffffff;
   color: var(--text);
 }
 
-/* A centered stack layout (single column) */
 .contact-container {
   max-width: 760px;
   margin: 0 auto;
@@ -506,21 +414,17 @@ header h1 {
   gap: 1.25rem;
 }
 
-/* “Intro card” */
 .contact-info {
   background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.4rem 1.5rem;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .contact-info h2 {
   font-family: "DM Serif Text", serif;
-  font-size: clamp(2.0rem, 1.4vw, 2.6rem);
+  font-size: clamp(2rem, 1.4vw, 2.6rem);
   font-weight: 400;
   margin-bottom: 0.5rem;
   letter-spacing: 0.5px;
@@ -533,15 +437,12 @@ header h1 {
   color: var(--muted);
 }
 
-/* Form “hero card” */
 .contact-form-section {
   background: #f8f8f8;
   border-radius: 14px;
   border: 1px solid var(--border);
   padding: 1.6rem 1.6rem 1.2rem;
-
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
 }
 
 .contact-form-section h3 {
@@ -583,8 +484,7 @@ header h1 {
   color: #333333;
   font-family: inherit;
   font-size: 0.98rem;
-
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.08s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
@@ -603,13 +503,13 @@ header h1 {
 .contact-form button[type="submit"] {
   cursor: pointer;
   margin-top: 0.25rem;
-
   padding: 0.95rem 1.25rem;
   border-radius: 12px;
 
   background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
-  border: none;
   color: #ffffff;
+
+  border: none;
 
   font-family: "DM Serif Text", serif;
   font-size: 1rem;
@@ -637,10 +537,7 @@ header h1 {
   min-height: 1.2em;
 }
 
-/* Social underneath, centered */
 .contact-methods {
-  /* We keep the class name so your existing HTML doesn’t break,
-     but this is now a “social footer” area. */
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -661,7 +558,6 @@ header h1 {
   color: var(--ink);
 }
 
-/* Social buttons */
 .social-links {
   display: flex;
   gap: 0.75rem;
@@ -689,24 +585,6 @@ header h1 {
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(52, 152, 219, 0.25);
-}
-.contact-page {
-  /* existing values… */
-  padding-top: 3.0rem; /* increases spacing under the header */
-}
-/* Contact form submit button: force readable contrast */
-.contact-form button[type="submit"] {
-  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
-  color: #ffffff;
-}
-
-.contact-form button[type="submit"]:hover {
-  background: linear-gradient(180deg, var(--accent-2) 0%, var(--accent-2) 100%);
-  color: #ffffff;
-}
-
-.contact-form button[type="submit"]:active {
-  color: #ffffff;
 }
 
 /* =============================================================================
@@ -780,69 +658,8 @@ header h1 {
 }
 
 /* =============================================================================
-   BACK-TO-TOP BUTTON
+   RESPONSIVE
    ============================================================================= */
-
-.back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-
-  width: 50px;
-  height: 50px;
-
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #111111;
-  border: 2px solid #111111;
-  border-radius: 50%;
-
-  font-size: 24px;
-  font-weight: bold;
-
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(100px);
-  transition: all 0.3s ease;
-
-  z-index: 999;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.back-to-top:hover {
-  background-color: #111111;
-  color: #ffffff;
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* =============================================================================
-   RESPONSIVE DESIGN (site-wide)
-   ============================================================================= */
-
-@media (max-width: 1200px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    column-gap: 2.5rem;
-  }
-
-  .gallery-item:nth-child(4n + 2),
-  .gallery-item:nth-child(4n + 3) {
-    margin-top: 3rem;
-  }
-}
 
 @media (max-width: 768px) {
   body {
@@ -855,10 +672,6 @@ header h1 {
 
   .vertical-line {
     height: 70px;
-  }
-
-  .text-stack {
-    gap: 10px;
   }
 
   .name-line {
@@ -882,7 +695,6 @@ header h1 {
   .hamburger-menu.active span:nth-child(1) {
     transform: rotate(45deg) translate(7px, 7px);
   }
-
   .hamburger-menu.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
   }
@@ -892,42 +704,12 @@ header h1 {
     padding-top: 108px;
   }
 
-  /* Gallery */
-  .gallery-container {
-    padding: 2rem 1rem;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    column-gap: 1.5rem;
-  }
-
-  .gallery-item:nth-child(4n + 2),
-  .gallery-item:nth-child(4n + 3) {
-    margin-top: 2rem;
-  }
-
-  /* Contact */
   .contact-page {
-    padding: 1.7rem 1rem 2.5rem;
-  }
-
-  .contact-container {
-    gap: 1rem;
+    padding: 2.6rem 1rem 2.5rem;
   }
 
   .form-group textarea {
     min-height: 110px;
-  }
-
-  /* Back to top */
-  .back-to-top {
-    right: 20px;
-    bottom: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
   }
 }
 
@@ -942,10 +724,6 @@ header h1 {
 
   .vertical-line {
     height: 62px;
-  }
-
-  .text-stack {
-    gap: 8px;
   }
 
   .name-line {
@@ -968,29 +746,5 @@ header h1 {
 
   .main-nav {
     width: 280px;
-  }
-
-  /* Gallery */
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .gallery-item:nth-child(4n + 2),
-  .gallery-item:nth-child(4n + 3) {
-    margin-top: 0;
-  }
-
-  .gallery-container {
-    padding: 1.5rem 1rem;
-  }
-
-  /* Back to top */
-  .back-to-top {
-    right: 15px;
-    bottom: 15px;
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
   }
 }
