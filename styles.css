@@ -768,360 +768,251 @@ h1 {
 }
 
 /* =============================================================================
-   CONTACT PAGE STYLES - Light & Clean Theme
+   CONTACT PAGE STYLES - Light & Clean Theme (Responsive + Centered)
    ============================================================================= */
 
+/* The whole contact page section */
 .contact-page {
-    max-width: 1200px;
-    margin: 100px auto 0; /* Add 100px top margin to clear header */
-    padding: 1.5rem 2rem 1rem; /* Reduced from 3rem to 1.5rem top, 1rem bottom */
-    background-color: #ffffff; /* White background */
-    color: #333333; /* Dark text for readability */
+  /* Center the section horizontally */
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /* Space around the content */
+  padding: 2rem 1rem;
+
+  background-color: #ffffff;
+  color: #333333;
+
+  /* Make it at least one screen tall (minus fixed header space).
+     Your CSS already has body { padding-top: 80px; }, so this works well. */
+  min-height: calc(100vh - 80px);
 }
 
+/* The grid that holds: (left) contact info and (right) form */
 .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem; /* Reduced from 3rem to 2rem */
+  width: 100%;
+  max-width: 1100px;                 /* prevents it from stretching too wide on 27" */
+  margin: 0 auto;                    /* centers the grid inside the section */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  /* Responsive gap: small on small screens, bigger on big screens */
+  gap: clamp(1.5rem, 3vw, 4rem);
+
+  align-items: start;
 }
 
+/* Left column heading */
 .contact-info h2 {
-    font-family: 'DM Serif Text', serif;
-    font-size: 2rem; /* Reduced from 2.5rem to 2rem */
-    font-weight: 400;
-    margin-bottom: 0.7rem; /* Reduced from 1rem to 0.7rem */
-    letter-spacing: 0.5px;
-    color: #111111;
+  font-family: 'DM Serif Text', serif;
+  font-size: clamp(1.8rem, 1.2vw, 2.4rem);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+  color: #111111;
 }
 
+/* Left column intro paragraph */
 .contact-intro {
-    font-size: 1rem; /* Reduced from 1.1rem to 1rem */
-    margin-bottom: 1.5rem; /* Reduced from 2.5rem to 1.5rem */
-    line-height: 1.6; /* Reduced from 1.8 to 1.6 */
-    color: #555555;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: #555555;
 }
 
+/* List of contact method cards */
 .contact-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem; /* more space between contact methods */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* spacing between cards */
 }
 
+/* Individual method card */
 .contact-method {
-    padding: 1rem; /* Reduced from 1.5rem to 1rem */
-    background: #f8f8f8;
-    border-radius: 6px;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+
+  /* Keep overlay feel without movement */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-method:hover {
-    background: #f0f0f0;
-    border-color: #d0d0d0;
-    transform: none; /* stop the side movement */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #f0f0f0;
+  border-color: #d0d0d0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .contact-method h3 {
-    font-family: 'DM Serif Text', serif;
-    font-size: 1rem; /* Reduced from 1.15rem to 1rem */
-    font-weight: 400;
-    margin-bottom: 0.5rem; /* Reduced from 0.7rem to 0.5rem */
-    letter-spacing: 0.5px;
-    color: #222222;
+  font-family: 'DM Serif Text', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+  color: #222222;
 }
 
 .contact-method p {
-    color: #555555;
+  color: #555555;
 }
 
 .contact-method a {
-    color: #2c3e50;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .contact-method a:hover {
-    color: #3498db;
+  color: #3498db;
 }
 
+/* Social buttons */
 .social-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
 
 .social-links a {
-    padding: 0.6rem 1.3rem;
-    background: #ffffff;
-    border: 1px solid #d0d0d0;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    color: #333333;
+  padding: 0.6rem 1.1rem;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+              transform 0.3s ease, box-shadow 0.3s ease;
+
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: #333333;
 }
 
 .social-links a:hover {
-    background: #3498db;
-    color: #ffffff;
-    border-color: #3498db;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  background: #3498db;
+  color: #ffffff;
+  border-color: #3498db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
+/* Right column: form card */
 .contact-form-section {
-    background: #f8f8f8;
-    padding: 1.5rem; /* Reduced from 2.5rem to 1.5rem */
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  background: #f8f8f8;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .contact-form-section h3 {
-    font-family: 'DM Serif Text', serif;
-    font-size: 1.5rem; /* Reduced from 1.8rem to 1.5rem */
-    font-weight: 400;
-    margin-bottom: 1rem; /* Reduced from 1.5rem to 1rem */
-    letter-spacing: 0.5px;
-    color: #111111;
+  font-family: 'DM Serif Text', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  color: #111111;
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Reduced from 1.8rem to 1rem */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    margin-bottom: 0.4rem; /* Reduced from 0.6rem to 0.4rem */
-    font-family: 'DM Serif Text', serif;
-    font-size: 0.85rem; /* Reduced from 0.95rem to 0.85rem */
-    letter-spacing: 0.8px;
-    color: #333333;
-    text-transform: uppercase;
-    font-weight: 400;
+  margin-bottom: 0.4rem;
+  font-family: 'DM Serif Text', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.8px;
+  color: #333333;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .form-group input,
 .form-group textarea {
-    padding: 0.7rem 1rem; /* Reduced from 1rem 1.2rem to 0.7rem 1rem */
-    background: #ffffff;
-    border: 1px solid #d0d0d0;
-    border-radius: 6px;
-    color: #333333;
-    font-family: inherit;
-    font-size: 0.95rem; /* Reduced from 1rem to 0.95rem */
-    transition: all 0.3s ease;
-}
+  padding: 0.7rem 1rem;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  color: #333333;
+  font-family: inherit;
+  font-size: 0.95rem;
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #999999;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: #3498db;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .form-group textarea {
-    resize: vertical;
-    min-height: 80px; /* Reduced from 140px to 80px */
-    line-height: 1.5; /* Reduced from 1.6 to 1.5 */
+  resize: vertical;
+  min-height: 110px; /* a little taller on desktop */
+  line-height: 1.5;
 }
 
+/* Submit button */
 .contact-form button[type="submit"] {
-    cursor: pointer;
-    margin-top: 0.3rem; /* Reduced from 0.5rem to 0.3rem */
-    padding: 0.85rem 2rem; /* Reduced from 1.1rem 2.5rem to 0.85rem 2rem */
-    background: #3498db;
-    border: none;
-    border-radius: 6px;
-    color: #ffffff;
-    font-family: 'DM Serif Text', serif;
-    font-size: 1rem; /* Reduced from 1.05rem to 1rem */
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(52, 152, 219, 0.3);
+  cursor: pointer;
+  margin-top: 0.25rem;
+  padding: 0.85rem 2rem;
+  background: #3498db;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: 'DM Serif Text', serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.3);
 }
 
 .contact-form button[type="submit"]:hover {
-    background: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(52, 152, 219, 0.4);
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.4);
 }
 
 .contact-form button[type="submit"]:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
-.form-note {
-    margin-top: 1rem; /* Reduced from 1.5rem to 1rem */
-    font-size: 0.8rem; /* Reduced from 0.85rem to 0.8rem */
-    color: #666666;
-    font-style: italic;
-    line-height: 1.5; /* Reduced from 1.6 to 1.5 */
-    padding: 0.8rem; /* Reduced from 1rem to 0.8rem */
-    background: #f0f0f0;
-    border-left: 3px solid #3498db;
-    border-radius: 4px;
+/* The "Sending…" / success / error message area */
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #333333;
 }
 
+/* Mobile: stack into one column */
 @media (max-width: 768px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-}
+  .contact-page {
+    padding: 1.5rem 1rem;
+    min-height: auto; /* let content determine height on phones */
+  }
 
-/* ===================================
-   FULLSCREEN SLIDESHOW (Home Page)
-   =================================== */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 
-.fullscreen-slideshow {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #f9f9f9; /* Off-white background */
-}
-
-.slideshow-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Each slide */
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-}
-
-.slide.active {
-    opacity: 1;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* Text Overlay on Slideshow */
-.slideshow-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #ffffff;
-    z-index: 10;
-    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
-    pointer-events: none;
-}
-
-.overlay-title {
-    font-size: 4rem;
-    font-weight: 300;
-    letter-spacing: 4px;
-    margin: 0;
-    margin-bottom: 1rem;
-    text-transform: lowercase;
-}
-
-.overlay-subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    margin: 0;
-    opacity: 0.9;
-}
-
-/* Navigation Dots */
-.slideshow-dots {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex;
-    gap: 12px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-    transform: scale(1.2);
-}
-
-.dot.active {
-    background-color: #ffffff;
-    width: 30px;
-    border-radius: 6px;
-}
-
-/* Mobile Responsive for Slideshow */
-@media (max-width: 768px) {
-    .overlay-title {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-    }
-    
-    .overlay-subtitle {
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-    }
-    
-    .slideshow-dots {
-        bottom: 20px;
-    }
-    
-    .dot {
-        width: 10px;
-        height: 10px;
-    }
-    
-    .dot.active {
-        width: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .overlay-title {
-        font-size: 2rem;
-        letter-spacing: 1px;
-    }
-    
-    .overlay-subtitle {
-        font-size: 1rem;
-    }
+  .form-group textarea {
+    min-height: 90px;
+  }
 }
 
 /* =============================================================================
