@@ -398,29 +398,71 @@ header h1 {
   padding: 5rem 2rem 3rem;
 }/* =============================================================================
    CONTACT
+   - Left card: Get in Touch heading, paragraph, social icons
+   - Right card: form with full-width fields, centered phone
+   - Desktop: 2-column side by side
+   - Mobile: stacked
    ============================================================================= */
 
 .contact-page {
-  max-width: 980px;
+  max-width: 1060px;
   margin: 0 auto;
-  padding: 3.5rem 1rem 2rem;
+  padding: 4rem 1.5rem 3rem;
   background-color: #ffffff;
   color: var(--text, #333333);
 }
 
 .contact-container {
-  max-width: 760px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Left card */
+.contact-info {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+.contact-info h2 {
+  font-family: "DM Serif Text", serif;
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: var(--ink, #111111);
+  line-height: 1.15;
+}
+
+.contact-info p {
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--text, #444444);
+  margin: 0;
+}
+
+/* Social icons in left card */
+.contact-social {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* Right card */
 .contact-form-section {
   background: #f8f8f8;
   border-radius: 14px;
   border: 1px solid var(--border, #e0e0e0);
-  padding: 1.35rem 1.4rem 1.1rem;
+  padding: 1.5rem 1.5rem 1.2rem;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
 }
 
@@ -434,9 +476,9 @@ header h1 {
 }
 
 .contact-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .form-group {
@@ -444,12 +486,10 @@ header h1 {
   flex-direction: column;
 }
 
-.form-group--full {
-  grid-column: 1 / -1;
-}
-
-.form-group--half {
-  grid-column: 1 / 2;
+/* Phone: centered at ~55% width */
+.form-group--center {
+  width: 55%;
+  margin: 0 auto;
 }
 
 .form-group label {
@@ -483,12 +523,11 @@ header h1 {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 160px;
+  min-height: 150px;
   line-height: 1.5;
 }
 
 .contact-form button[type="submit"] {
-  grid-column: 1 / -1;
   cursor: pointer;
   margin-top: 0.15rem;
   padding: 0.9rem 1.15rem;
@@ -519,23 +558,12 @@ header h1 {
 }
 
 .form-status {
-  grid-column: 1 / -1;
-  margin-top: 0.6rem;
   font-size: 0.95rem;
   color: var(--text, #333333);
   min-height: 1.2em;
 }
 
-.contact-social {
-  grid-column: 1 / -1;
-  margin-top: 0.35rem;
-  padding-top: 0.35rem;
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Social icon shared styles */
 .social-icon {
   width: 34px;
   height: 34px;
@@ -576,15 +604,17 @@ header h1 {
   );
 }
 
-@media (max-width: 480px) {
-  .contact-form {
+/* Stack on tablet/mobile */
+@media (max-width: 760px) {
+  .contact-container {
     grid-template-columns: 1fr;
   }
-  .form-group--half {
-    grid-column: 1 / -1;
+
+  .form-group--center {
+    width: 100%;
+    margin: 0;
   }
 }
-
 /* =============================================================================
    RESPONSIVE
    ============================================================================= */
