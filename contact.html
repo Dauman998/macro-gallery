@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Dan Bauman Photography</title>
-  <link rel="stylesheet" href="styles.css?v=20260308" />
+  <link rel="stylesheet" href="styles.css?v=20260308-3" />
 </head>
 <body>
   <header>
@@ -15,14 +15,14 @@
             <span class="name-line">dan bauman</span>
             <span class="tagline-line">photography</span>
           </span>
-          <span class="vertical-line"></span>
+          <span class="vertical-line" aria-hidden="true"></span>
         </a>
       </h1>
 
-      <button class="hamburger-menu" aria-label="Menu" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="hamburger-menu" aria-label="Menu" id="hamburger" type="button">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
 
@@ -35,10 +35,6 @@
       </ul>
     </nav>
   </header>
-
-  <!-- Optional overlay (only works if your navigation.js toggles it).
-       If you don’t have overlay logic, this div does nothing and is safe. -->
-  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
 
   <main class="contact-page">
     <div class="contact-container">
@@ -99,12 +95,10 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       statusEl.textContent = "Sending…";
 
       try {
         const formData = new FormData(form);
-
         const response = await fetch(form.action, {
           method: "POST",
           body: formData,
