@@ -25,16 +25,13 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      padding: 6rem 1.5rem 4rem; /* top: distance below header */
+      padding: 6rem 1.5rem 4rem;
       display: flex;
       align-items: flex-start;
       justify-content: center;
     }
 
-    /* ─── TWO-COLUMN GRID ────────────────────────────────────────────────────────
-       Left (form) wider, right (image) narrower.
-       align-items: start so columns don't stretch to each other's height —
-       the image panel controls its own height via JS measurement instead.         */
+    /* ─── TWO-COLUMN GRID ─────────────────────────────────────────────────────── */
     .contact-container {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
@@ -44,7 +41,6 @@
       align-items: start;
     }
 
-    /* ─── LEFT COLUMN ────────────────────────────────────────────────────────── */
     .contact-form-section {
       background: none;
       border: none;
@@ -52,15 +48,17 @@
     }
 
     /* ─── HEADING ────────────────────────────────────────────────────────────────
-       Same color as Send button and field labels.                                 */
+       DM Sans, weight 300.
+       *** To adjust size: change the three values in clamp() ***
+       clamp(MIN, PREFERRED, MAX) — e.g. clamp(1.2rem, 1.6vw, 1.6rem) to go bigger */
     .contact-form-section h3 {
-      font-family: "DM Serif Text", serif;
-      font-size: clamp(1.6rem, 2vw, 2.2rem);
-      font-weight: 400;
-      color: rgba(255,255,255,0.48); /* heading brightness */
-      line-height: 1.15;
+      font-family: "DM Sans", sans-serif;
+      font-size: clamp(1.2rem, 1.6vw, 1.6rem); /* ← adjust size here */
+      font-weight: 300;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.2;
       letter-spacing: 0.3px;
-      margin-bottom: 1.3rem; /* gap from heading to first field */
+      margin-bottom: 1.3rem;
     }
 
     .contact-form {
@@ -71,32 +69,30 @@
     .form-group {
       display: flex;
       flex-direction: column;
-      padding-bottom: 1.4rem; /* gap between fields */
+      padding-bottom: 1.4rem;
     }
 
     .form-group:last-of-type { padding-bottom: 0; }
 
-    /* ─── FIELD LABELS ───────────────────────────────────────────────────────────
-       font-size: label size. letter-spacing: spread. color: brightness.           */
+    /* ─── FIELD LABELS ─────────────────────────────────────────────────────────── */
     .form-group label {
       font-family: "DM Sans", sans-serif;
-      font-size: 0.67rem;            /* label size */
-      letter-spacing: 1.6px;        /* label spread */
+      font-size: 0.67rem;            /* ← label size */
+      letter-spacing: 1.6px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.48); /* label brightness */
+      color: rgba(255,255,255,0.48);
       margin-bottom: 0.45rem;
       font-weight: 400;
     }
 
-    /* ─── FIELD INPUTS ───────────────────────────────────────────────────────────
-       Hover brightens border + fill. Focus brightens further + glow ring.         */
+    /* ─── FIELD INPUTS ─────────────────────────────────────────────────────────── */
     .form-group input,
     .form-group textarea {
-      background: rgba(255,255,255,0.06);        /* field fill */
-      border: 1px solid rgba(255,255,255,0.22);  /* field border */
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.22);  /* image border matches this */
       border-radius: 8px;
       padding: 0.65rem 0.9rem;
-      color: rgba(255,255,255,0.78);             /* typed text brightness */
+      color: rgba(255,255,255,0.78);
       font-family: "DM Sans", sans-serif;
       font-size: 0.96rem;
       font-weight: 300;
@@ -107,16 +103,16 @@
 
     .form-group input:hover,
     .form-group textarea:hover {
-      border-color: rgba(255,255,255,0.38); /* hover border */
-      background: rgba(255,255,255,0.08);   /* hover fill */
+      border-color: rgba(255,255,255,0.38);
+      background: rgba(255,255,255,0.08);
     }
 
     .form-group input:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: rgba(255,255,255,0.55);          /* focus border */
-      background: rgba(255,255,255,0.10);            /* focus fill */
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.05);  /* glow ring */
+      border-color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.10);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
     }
 
     .form-group textarea {
@@ -125,19 +121,29 @@
       line-height: 1.8;
     }
 
+    /* ─── BOTTOM ROW ─────────────────────────────────────────────────────────────
+       Send button on the left, grows to fill space.
+       Icons sit at the right edge, aligned under the right side of message box.   */
+    .form-bottom {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
     /* ─── SEND BUTTON ────────────────────────────────────────────────────────────
-       border and color always the same — change both together.
-       font-weight 300 + letter-spacing 2px = lighter feel than labels.            */
+       flex: 1 makes it fill all space except what the icons take up.
+       border and color always the same value — change both together.              */
     button[type="submit"] {
+      flex: 1;                       /* fills remaining width after icons */
       cursor: pointer;
-      margin-top: 1.8rem;
       padding: 0.72rem 1rem;
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.48); /* border — keep same as color below */
+      border: 1px solid rgba(255,255,255,0.48); /* ← border brightness */
       border-radius: 8px;
-      color: rgba(255,255,255,0.48);             /* text — keep same as border above */
+      color: rgba(255,255,255,0.48);             /* ← text brightness, keep = border */
       font-family: "DM Sans", sans-serif;
-      font-size: 0.82rem;                        /* slightly larger than labels (0.67rem) */
+      font-size: 0.82rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 300;
@@ -151,51 +157,19 @@
       transform: translateY(-1px);
     }
 
-    .form-status {
-      margin-top: 0.8rem;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.35);
-      min-height: 1.2em;
-    }
-
-    /* ─── RIGHT COLUMN ───────────────────────────────────────────────────────────
-       Flex column: image panel on top, icons below.
-       JS sets the top offset so image aligns with Name field input,
-       and sets height so bottom aligns with Send button bottom.                   */
-    .contact-info {
+    /* ─── ICONS WRAPPER ──────────────────────────────────────────────────────────
+       flex-shrink: 0 keeps it from being squeezed by the button.                  */
+    .form-icons {
       display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    /* ─── IMAGE PANEL ────────────────────────────────────────────────────────────
-       border: adjust opacity or set to 'none' depending on your image.
-       object-position: reframe which part of the image shows — e.g. 'top center',
-       '30% 60%', 'left center' etc.                                               */
-    .contact-image {
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18); /* panel border — set to none to remove */
-      /* height and margin-top set by JS to align with Name field and Send button */
-    }
-
-    .contact-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center; /* reframe crop here */
-      display: block;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
     }
 
     /* ─── SOCIAL ICONS ───────────────────────────────────────────────────────────
-       Grayscale — dark gray background, white glyph.
-       To adjust brightness: change the #3a3a3a background value.
-       Lighter = higher hex e.g. #555. Darker = lower e.g. #222.                  */
-    .contact-social {
-      display: flex;
-      gap: 0.7rem;
-      align-items: center;
-    }
-
+       Grayscale. To adjust brightness: change #3a3a3a.
+       Lighter = higher hex e.g. #555. Darker = lower e.g. #222.
+       To restore color: replace background with the gradient/hex from earlier.    */
     .social-icon {
       width: 40px;
       height: 40px;
@@ -205,37 +179,60 @@
       justify-content: center;
       text-decoration: none;
       border: none;
-      background: #3a3a3a; /* grayscale background — adjust to taste */
+      background: #3a3a3a;           /* ← grayscale fill */
       transition: transform 0.15s, background 0.2s;
     }
 
     .social-icon:hover {
       transform: translateY(-2px);
-      background: #4a4a4a; /* slightly lighter on hover */
+      background: #4a4a4a;
     }
 
     .social-icon svg {
       width: 20px;
       height: 20px;
-      fill: rgba(255,255,255,0.75); /* glyph brightness */
+      fill: rgba(255,255,255,0.75);  /* ← glyph brightness */
+    }
+
+    .form-status {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      min-height: 1.2em;
+    }
+
+    /* ─── RIGHT COLUMN ───────────────────────────────────────────────────────── */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── IMAGE PANEL ────────────────────────────────────────────────────────────
+       border matches field borders exactly.
+       object-position: reframe crop — e.g. 'top center', '30% 60%'.
+       height and margin-top set by JS to align with Name input + Send button.     */
+    .contact-image {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.22); /* matches field border */
+    }
+
+    .contact-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center; /* ← reframe crop here */
+      display: block;
     }
 
     /* ─── MOBILE / TABLET ────────────────────────────────────────────────────────
-       Single column below 760px. Image panel hidden. Icons show under form.       */
+       Single column. Image hidden.                                                 */
     @media (max-width: 760px) {
       .contact-container {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-
       .contact-image {
-        display: none; /* image panel hidden on mobile/tablet */
-      }
-
-      /* Move icons to appear after the form on mobile */
-      .contact-info {
-        flex-direction: row;
-        gap: 0.7rem;
+        display: none;
       }
     }
   </style>
@@ -244,8 +241,7 @@
   <main class="contact-page">
     <div class="contact-container" id="contactContainer">
 
-      <!-- Left: form -->
-      <section class="contact-form-section" id="formSection">
+      <section class="contact-form-section">
         <h3>Send a Message</h3>
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkoqgzdo" method="POST">
 
@@ -269,30 +265,31 @@
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
 
-          <button type="submit" id="sendBtn">Send</button>
+          <!-- Bottom row: Send button (fills width) + icons (right-aligned) -->
+          <div class="form-bottom">
+            <button type="submit" id="sendBtn">Send</button>
+            <div class="form-icons" aria-label="Social links">
+              <a class="social-icon" href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm10.0 1.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                </svg>
+              </a>
+              <a class="social-icon" href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.6-1.5H16.7V5c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5V11H7.2v3h2.6v8h3.7Z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
           <p id="formStatus" class="form-status" aria-live="polite"></p>
 
         </form>
       </section>
 
-      <!-- Right: image panel + icons -->
       <aside class="contact-info" id="contactInfo">
         <div class="contact-image" id="contactImage">
-          <!-- Same image as background, or swap for any dark portrait-oriented photo -->
           <img src="contact-bg.jpg" alt="" aria-hidden="true" />
-        </div>
-
-        <div class="contact-social" aria-label="Social links">
-          <a class="social-icon" href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm10.0 1.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
-            </svg>
-          </a>
-          <a class="social-icon" href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.6-1.5H16.7V5c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5V11H7.2v3h2.6v8h3.7Z"/>
-            </svg>
-          </a>
         </div>
       </aside>
 
@@ -318,27 +315,23 @@
     });
 
     /* ─── IMAGE PANEL ALIGNMENT ──────────────────────────────────────────────────
-       Measures the Name input top and Send button bottom, then sets the image
-       panel's margin-top and height to match exactly.
-       Runs on load and on resize so it stays accurate at any window width.        */
+       Top of image aligns with top of Name input.
+       Bottom of image aligns with bottom of Send button.
+       Reruns on resize to stay accurate.                                           */
     function alignImagePanel() {
-      if (window.innerWidth <= 760) return; // skip on mobile
+      if (window.innerWidth <= 760) return;
 
-      const container   = document.getElementById("contactContainer");
-      const nameInput   = document.getElementById("name");
-      const sendBtn     = document.getElementById("sendBtn");
-      const imagePanel  = document.getElementById("contactImage");
-      const infoCol     = document.getElementById("contactInfo");
+      const container  = document.getElementById("contactContainer");
+      const nameInput  = document.getElementById("name");
+      const sendBtn    = document.getElementById("sendBtn");
+      const imagePanel = document.getElementById("contactImage");
 
-      const containerTop  = container.getBoundingClientRect().top;
-      const nameTop       = nameInput.getBoundingClientRect().top;
-      const sendBottom    = sendBtn.getBoundingClientRect().bottom;
+      const containerTop = container.getBoundingClientRect().top;
+      const nameTop      = nameInput.getBoundingClientRect().top;
+      const sendBottom   = sendBtn.getBoundingClientRect().bottom;
 
-      const offsetTop = nameTop - containerTop;       // distance from grid top to Name input top
-      const panelHeight = sendBottom - nameTop;        // height from Name input top to Send button bottom
-
-      imagePanel.style.marginTop = offsetTop + "px";
-      imagePanel.style.height    = panelHeight + "px";
+      imagePanel.style.marginTop = (nameTop - containerTop) + "px";
+      imagePanel.style.height    = (sendBottom - nameTop) + "px";
     }
 
     window.addEventListener("load", alignImagePanel);
