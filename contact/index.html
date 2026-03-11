@@ -3,56 +3,263 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Dan Bauman Photography</title>
-  <link rel="stylesheet" href="../styles.css?v=20260308-contact-5" />
+  <title>Contact — Dan Bauman Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      min-height: 100vh;
+      background-color: #0a0a0a;
+    }
+
+    /* ─── PAGE WRAPPER ───────────────────────────────────────────────────────────
+       Swap url('contact-bg.jpg') for your image filename.
+       Adjust the two rgba opacity values to control overlay darkness.             */
+    .contact-page {
+      min-height: 100vh;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.78)), /* overlay — raise to darken */
+        url('contact-bg.jpg');                                 /* your background image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 6rem 1.5rem 4rem; /* top: distance below header */
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    /* ─── TWO-COLUMN GRID ────────────────────────────────────────────────────────
+       Left (form) wider, right (image) narrower.
+       align-items: start so columns don't stretch to each other's height —
+       the image panel controls its own height via JS measurement instead.         */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1000px;
+      align-items: start;
+    }
+
+    /* ─── LEFT COLUMN ────────────────────────────────────────────────────────── */
+    .contact-form-section {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    /* ─── HEADING ────────────────────────────────────────────────────────────────
+       Same color as Send button and field labels.                                 */
+    .contact-form-section h3 {
+      font-family: "DM Serif Text", serif;
+      font-size: clamp(1.6rem, 2vw, 2.2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.48); /* heading brightness */
+      line-height: 1.15;
+      letter-spacing: 0.3px;
+      margin-bottom: 1.3rem; /* gap from heading to first field */
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 1.4rem; /* gap between fields */
+    }
+
+    .form-group:last-of-type { padding-bottom: 0; }
+
+    /* ─── FIELD LABELS ───────────────────────────────────────────────────────────
+       font-size: label size. letter-spacing: spread. color: brightness.           */
+    .form-group label {
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.67rem;            /* label size */
+      letter-spacing: 1.6px;        /* label spread */
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.48); /* label brightness */
+      margin-bottom: 0.45rem;
+      font-weight: 400;
+    }
+
+    /* ─── FIELD INPUTS ───────────────────────────────────────────────────────────
+       Hover brightens border + fill. Focus brightens further + glow ring.         */
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);        /* field fill */
+      border: 1px solid rgba(255,255,255,0.22);  /* field border */
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      color: rgba(255,255,255,0.78);             /* typed text brightness */
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.96rem;
+      font-weight: 300;
+      letter-spacing: 0.2px;
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+      width: 100%;
+    }
+
+    .form-group input:hover,
+    .form-group textarea:hover {
+      border-color: rgba(255,255,255,0.38); /* hover border */
+      background: rgba(255,255,255,0.08);   /* hover fill */
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,0.55);          /* focus border */
+      background: rgba(255,255,255,0.10);            /* focus fill */
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.05);  /* glow ring */
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.8;
+    }
+
+    /* ─── SEND BUTTON ────────────────────────────────────────────────────────────
+       border and color always the same — change both together.
+       font-weight 300 + letter-spacing 2px = lighter feel than labels.            */
+    button[type="submit"] {
+      cursor: pointer;
+      margin-top: 1.8rem;
+      padding: 0.72rem 1rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.48); /* border — keep same as color below */
+      border-radius: 8px;
+      color: rgba(255,255,255,0.48);             /* text — keep same as border above */
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.82rem;                        /* slightly larger than labels (0.67rem) */
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 300;
+      transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.12s;
+    }
+
+    button[type="submit"]:hover {
+      border-color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-1px);
+    }
+
+    .form-status {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      min-height: 1.2em;
+    }
+
+    /* ─── RIGHT COLUMN ───────────────────────────────────────────────────────────
+       Flex column: image panel on top, icons below.
+       JS sets the top offset so image aligns with Name field input,
+       and sets height so bottom aligns with Send button bottom.                   */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    /* ─── IMAGE PANEL ────────────────────────────────────────────────────────────
+       border: adjust opacity or set to 'none' depending on your image.
+       object-position: reframe which part of the image shows — e.g. 'top center',
+       '30% 60%', 'left center' etc.                                               */
+    .contact-image {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18); /* panel border — set to none to remove */
+      /* height and margin-top set by JS to align with Name field and Send button */
+    }
+
+    .contact-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center; /* reframe crop here */
+      display: block;
+    }
+
+    /* ─── SOCIAL ICONS ───────────────────────────────────────────────────────────
+       Grayscale — dark gray background, white glyph.
+       To adjust brightness: change the #3a3a3a background value.
+       Lighter = higher hex e.g. #555. Darker = lower e.g. #222.                  */
+    .contact-social {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: none;
+      background: #3a3a3a; /* grayscale background — adjust to taste */
+      transition: transform 0.15s, background 0.2s;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-2px);
+      background: #4a4a4a; /* slightly lighter on hover */
+    }
+
+    .social-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: rgba(255,255,255,0.75); /* glyph brightness */
+    }
+
+    /* ─── MOBILE / TABLET ────────────────────────────────────────────────────────
+       Single column below 760px. Image panel hidden. Icons show under form.       */
+    @media (max-width: 760px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .contact-image {
+        display: none; /* image panel hidden on mobile/tablet */
+      }
+
+      /* Move icons to appear after the form on mobile */
+      .contact-info {
+        flex-direction: row;
+        gap: 0.7rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1 class="logo-with-line">
-        <a href="../index.html" class="logo-link">
-          <span class="text-stack">
-            <span class="name-line">dan bauman</span>
-            <span class="tagline-line">photography</span>
-          </span>
-          <span class="vertical-line" aria-hidden="true"></span>
-        </a>
-      </h1>
-      <button class="hamburger-menu" aria-label="Menu" id="hamburger" type="button">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
-    </div>
-    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../gallery.html">Portfolio</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="./" class="active">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
   <main class="contact-page">
-    <div class="contact-container">
+    <div class="contact-container" id="contactContainer">
 
-      <!-- Left card: form -->
-      <section class="contact-form-section" aria-label="Contact form">
+      <!-- Left: form -->
+      <section class="contact-form-section" id="formSection">
         <h3>Send a Message</h3>
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkoqgzdo" method="POST">
 
-          <div class="form-group">
-            <label for="name">Your Name *</label>
+          <div class="form-group" id="nameGroup">
+            <label for="name">Name *</label>
             <input type="text" id="name" name="name" autocomplete="name" required />
           </div>
 
           <div class="form-group">
-            <label for="email">Your Email *</label>
+            <label for="email">Email *</label>
             <input type="email" id="email" name="email" autocomplete="email" required />
           </div>
 
-          <div class="form-group form-group--center">
+          <div class="form-group">
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" />
           </div>
@@ -62,58 +269,80 @@
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
 
-          <button type="submit">Send Message</button>
+          <button type="submit" id="sendBtn">Send</button>
           <p id="formStatus" class="form-status" aria-live="polite"></p>
 
         </form>
       </section>
 
-      <!-- Right card: Get in Touch + social -->
-      <section class="contact-info">
-        <h2>Get in Touch</h2>
-        <p>Whether you're interested in commissioning a print, licensing an image, or simply want to talk about the work, I'd love to hear from you.</p>
+      <!-- Right: image panel + icons -->
+      <aside class="contact-info" id="contactInfo">
+        <div class="contact-image" id="contactImage">
+          <!-- Same image as background, or swap for any dark portrait-oriented photo -->
+          <img src="contact-bg.jpg" alt="" aria-hidden="true" />
+        </div>
+
         <div class="contact-social" aria-label="Social links">
-          <a class="social-icon instagram" href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+          <a class="social-icon" href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm10.0 1.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
             </svg>
           </a>
-          <a class="social-icon facebook" href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+          <a class="social-icon" href="https://www.facebook.com/danbaumanphotography" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.6-1.5H16.7V5c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5V11H7.2v3h2.6v8h3.7Z"/>
             </svg>
           </a>
         </div>
-      </section>
+      </aside>
 
     </div>
   </main>
 
-  <script src="../navigation.js?v=20260308-final"></script>
   <script>
+    /* ─── FORM SUBMIT ──────────────────────────────────────────────────────────── */
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
-
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       statusEl.textContent = "Sending…";
       try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
+        const res = await fetch(form.action, {
           method: "POST",
-          body: formData,
+          body: new FormData(form),
           headers: { Accept: "application/json" }
         });
-        if (response.ok) {
-          statusEl.textContent = "Thanks! Your message was sent.";
-          form.reset();
-        } else {
-          statusEl.textContent = "Sorry—something went wrong. Please try again.";
-        }
-      } catch (err) {
-        statusEl.textContent = "Network error—please check your connection and try again.";
-      }
+        if (res.ok) { statusEl.textContent = "Thanks! Your message was sent."; form.reset(); }
+        else { statusEl.textContent = "Sorry — something went wrong. Please try again."; }
+      } catch { statusEl.textContent = "Network error — please check your connection."; }
     });
+
+    /* ─── IMAGE PANEL ALIGNMENT ──────────────────────────────────────────────────
+       Measures the Name input top and Send button bottom, then sets the image
+       panel's margin-top and height to match exactly.
+       Runs on load and on resize so it stays accurate at any window width.        */
+    function alignImagePanel() {
+      if (window.innerWidth <= 760) return; // skip on mobile
+
+      const container   = document.getElementById("contactContainer");
+      const nameInput   = document.getElementById("name");
+      const sendBtn     = document.getElementById("sendBtn");
+      const imagePanel  = document.getElementById("contactImage");
+      const infoCol     = document.getElementById("contactInfo");
+
+      const containerTop  = container.getBoundingClientRect().top;
+      const nameTop       = nameInput.getBoundingClientRect().top;
+      const sendBottom    = sendBtn.getBoundingClientRect().bottom;
+
+      const offsetTop = nameTop - containerTop;       // distance from grid top to Name input top
+      const panelHeight = sendBottom - nameTop;        // height from Name input top to Send button bottom
+
+      imagePanel.style.marginTop = offsetTop + "px";
+      imagePanel.style.height    = panelHeight + "px";
+    }
+
+    window.addEventListener("load", alignImagePanel);
+    window.addEventListener("resize", alignImagePanel);
   </script>
 </body>
 </html>
