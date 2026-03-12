@@ -24,7 +24,7 @@
       right: 0;
       z-index: 100;
       background: transparent;
-      padding: 1.4rem 2rem;
+      padding: 1.4rem 2.8rem;        /* <- left/right padding from edge  */
     }
 
     .header-content {
@@ -40,27 +40,23 @@
       text-decoration: none;
     }
 
-    /* TEXT STACK: right-aligned so both lines end at same point         */
     .text-stack {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 0.25rem;                  /* <- gap between the two lines     */
+      gap: 0.4rem;                   /* <- gap between "dan bauman" and "photography" */
     }
 
-    /* LOGO NAME
-       font-size: make bigger/smaller here
-       color: all three elements share this exact value                  */
+    /* All three header elements share one color value — change together */
     .name-line {
       font-family: "DM Serif Text", serif;
       font-size: 1.75rem;            /* <- "dan bauman" size             */
       font-weight: 400;
       letter-spacing: 0.5px;
-      color: rgba(255,255,255,0.82); /* <- logo color — change all three together */
+      color: rgba(255,255,255,0.82); /* <- logo color — match all three  */
       line-height: 1;
     }
 
-    /* LOGO TAGLINE — same font, same color, smaller                     */
     .tagline-line {
       font-family: "DM Serif Text", serif;
       font-size: 1.1rem;             /* <- "photography" size            */
@@ -70,11 +66,10 @@
       line-height: 1;
     }
 
-    /* VERTICAL DIVIDER — same color as text                             */
     .vertical-line {
       width: 1px;
-      height: 3.2rem;
-      background: rgba(255,255,255,0.82); /* <- same as name/tagline     */
+      height: 3.8rem;                /* <- vertical line height          */
+      background: rgba(255,255,255,0.82); /* <- same as logo             */
     }
 
     /* HAMBURGER                                                          */
@@ -86,11 +81,12 @@
       flex-direction: column;
       gap: 7px;
       padding: 0.5rem;
+      margin-right: 0.4rem;          /* <- pulls away from right edge    */
     }
 
     .hamburger-menu span {
       display: block;
-      width: 34px;                   /* <- line width                    */
+      width: 34px;
       height: 2px;
       background: rgba(255,255,255,0.82); /* <- same color as logo       */
       transition: transform 0.3s, opacity 0.3s;
@@ -157,7 +153,7 @@
         linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.78)),
         url('2017.jpg');                  /* <- background image filename */
       background-size: cover;
-      background-position: center;
+      background-position: center;       /* <- reframe: 'top center', '30% 60%' */
       background-attachment: fixed;
       padding: 8rem 2rem 3rem;
       display: flex;
@@ -179,11 +175,14 @@
 
     .contact-form-section { background: none; border: none; padding: 0; }
 
+    /* HEADING "Send a Message"
+       Dimmed so it doesn't fight with the logo in the header
+       Raise opacity to brighten e.g. 0.65                               */
     .contact-form-section h3 {
       font-family: "DM Sans", sans-serif;
       font-size: clamp(1.2rem, 1.6vw, 1.6rem);
       font-weight: 300;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.48);    /* <- dimmed to avoid logo clash */
       line-height: 1.2;
       letter-spacing: 0.3px;
       margin-bottom: 1.3rem;
@@ -204,8 +203,7 @@
       font-weight: 400;
     }
 
-    /* FORM FIELDS
-       background: rgba(255,255,255,X) — raise X for more visible fill  */
+    /* FORM FIELDS                                                        */
     .form-group input,
     .form-group textarea {
       background: rgba(255,255,255,0.08); /* <- field fill opacity       */
@@ -241,7 +239,7 @@
       cursor: pointer;
       margin-top: 1.4rem;
       padding: 0.72rem 1rem;
-      background: rgba(255,255,255,0.14); /* <- button fill opacity      */
+      background: rgba(255,255,255,0.14);
       border: 1px solid rgba(255,255,255,0.28);
       border-radius: 8px;
       color: rgba(255,255,255,0.85);
@@ -282,7 +280,7 @@
       object-fit: cover;
       object-position: center center;
       display: block;
-      filter: brightness(0.65);     /* <- 1.0=original 0.7=darker 0.5=dark */
+      filter: brightness(0.65);
     }
 
     /* SOCIAL ICONS                                                       */
