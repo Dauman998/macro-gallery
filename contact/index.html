@@ -16,10 +16,7 @@
       flex-direction: column;
     }
 
-    /* TRANSPARENT HEADER
-       Sits on top of the background image.
-       Logo and hamburger color: rgba(255,255,255,X) — adjust brightness.
-       To make header semi-opaque add: background: rgba(0,0,0,0.3);      */
+    /* TRANSPARENT HEADER                                                 */
     header {
       position: fixed;
       top: 0;
@@ -27,7 +24,7 @@
       right: 0;
       z-index: 100;
       background: transparent;
-      padding: 1.2rem 2rem;
+      padding: 1.4rem 2rem;
     }
 
     .header-content {
@@ -39,72 +36,75 @@
     .logo-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
       text-decoration: none;
     }
 
+    /* TEXT STACK: right-aligned so both lines end at same point         */
     .text-stack {
       display: flex;
       flex-direction: column;
-      line-height: 1.15;
+      align-items: flex-end;
+      gap: 0.25rem;                  /* <- gap between the two lines     */
     }
 
+    /* LOGO NAME
+       font-size: make bigger/smaller here
+       color: all three elements share this exact value                  */
     .name-line {
-      font-family: "DM Sans", sans-serif;
-      font-size: 1.05rem;
-      font-weight: 300;
-      letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.88); /* <- logo name brightness */
-      text-transform: lowercase;
+      font-family: "DM Serif Text", serif;
+      font-size: 1.75rem;            /* <- "dan bauman" size             */
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.82); /* <- logo color — change all three together */
+      line-height: 1;
     }
 
+    /* LOGO TAGLINE — same font, same color, smaller                     */
     .tagline-line {
-      font-family: "DM Sans", sans-serif;
-      font-size: 0.72rem;
-      font-weight: 300;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,0.55); /* <- logo tagline brightness */
-      text-transform: lowercase;
+      font-family: "DM Serif Text", serif;
+      font-size: 1.1rem;             /* <- "photography" size            */
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.82); /* <- same as name-line             */
+      line-height: 1;
     }
 
+    /* VERTICAL DIVIDER — same color as text                             */
     .vertical-line {
       width: 1px;
-      height: 2.4rem;
-      background: rgba(255,255,255,0.25); /* <- divider line brightness */
+      height: 3.2rem;
+      background: rgba(255,255,255,0.82); /* <- same as name/tagline     */
     }
 
-    /* HAMBURGER
-       Three lines that animate to X when open.
-       color: rgba(255,255,255,X) — adjust brightness                    */
+    /* HAMBURGER                                                          */
     .hamburger-menu {
       background: none;
       border: none;
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      padding: 0.4rem;
+      gap: 7px;
+      padding: 0.5rem;
     }
 
     .hamburger-menu span {
       display: block;
-      width: 26px;
-      height: 1.5px;
-      background: rgba(255,255,255,0.75); /* <- hamburger line brightness */
+      width: 34px;                   /* <- line width                    */
+      height: 2px;
+      background: rgba(255,255,255,0.82); /* <- same color as logo       */
       transition: transform 0.3s, opacity 0.3s;
     }
 
     .hamburger-menu.active span:nth-child(1) {
-      transform: rotate(45deg) translate(4.5px, 4.5px);
+      transform: rotate(45deg) translate(6px, 6px);
     }
-    .hamburger-menu.active span:nth-child(2) {
-      opacity: 0;
-    }
+    .hamburger-menu.active span:nth-child(2) { opacity: 0; }
     .hamburger-menu.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(4.5px, -4.5px);
+      transform: rotate(-45deg) translate(6px, -6px);
     }
 
-    /* SLIDE-OUT NAV MENU                                                 */
+    /* SLIDE-OUT NAV                                                      */
     .main-nav {
       position: fixed;
       top: 0;
@@ -118,9 +118,7 @@
       padding-left: 2rem;
     }
 
-    .main-nav.active {
-      right: 0;
-    }
+    .main-nav.active { right: 0; }
 
     .main-nav ul {
       list-style: none;
@@ -130,20 +128,17 @@
     }
 
     .main-nav a {
-      font-family: "DM Sans", sans-serif;
-      font-size: 1.1rem;
-      font-weight: 300;
-      letter-spacing: 1.5px;
+      font-family: "DM Serif Text", serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
       text-decoration: none;
-      color: rgba(255,255,255,0.65);
-      text-transform: lowercase;
+      color: rgba(255,255,255,0.6);
       transition: color 0.2s;
     }
 
     .main-nav a:hover,
-    .main-nav a.active {
-      color: rgba(255,255,255,0.95);
-    }
+    .main-nav a.active { color: rgba(255,255,255,0.95); }
 
     .menu-overlay {
       display: none;
@@ -153,22 +148,18 @@
       z-index: 98;
     }
 
-    .menu-overlay.active {
-      display: block;
-    }
+    .menu-overlay.active { display: block; }
 
-    /* BACKGROUND IMAGE
-       Change '2017.jpg' to your filename (must be in contact/ folder)
-       Adjust rgba opacity to control overlay darkness                   */
+    /* BACKGROUND IMAGE                                                   */
     .contact-page {
       flex: 1;
       background-image:
         linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.78)),
         url('2017.jpg');                  /* <- background image filename */
       background-size: cover;
-      background-position: center;       /* <- reframe: 'top center', '30% 60%' */
+      background-position: center;
       background-attachment: fixed;
-      padding: 8rem 2rem 3rem;           /* top padding clears the fixed header */
+      padding: 8rem 2rem 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -176,65 +167,48 @@
       min-height: 100vh;
     }
 
-    /* TWO-COLUMN GRID
-       Centered with max-width. Adjust gap between columns here.         */
+    /* TWO-COLUMN GRID                                                    */
     .contact-container {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
       gap: 3rem;
       width: 100%;
-      max-width: 900px;               /* <- controls overall width of layout */
+      max-width: 900px;
       align-items: start;
     }
 
-    .contact-form-section {
-      background: none;
-      border: none;
-      padding: 0;
-    }
+    .contact-form-section { background: none; border: none; padding: 0; }
 
-    /* HEADING                                                            */
     .contact-form-section h3 {
       font-family: "DM Sans", sans-serif;
       font-size: clamp(1.2rem, 1.6vw, 1.6rem);
       font-weight: 300;
-      color: rgba(255,255,255,0.72);    /* <- heading brightness */
+      color: rgba(255,255,255,0.72);
       line-height: 1.2;
       letter-spacing: 0.3px;
       margin-bottom: 1.3rem;
     }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-    }
+    .contact-form { display: flex; flex-direction: column; }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 1.4rem;
-    }
-
+    .form-group { display: flex; flex-direction: column; padding-bottom: 1.4rem; }
     .form-group:last-of-type { padding-bottom: 0; }
 
-    /* FIELD LABELS                                                       */
     .form-group label {
       font-family: "DM Sans", sans-serif;
       font-size: 0.67rem;
       letter-spacing: 1.6px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.48);    /* <- label brightness */
+      color: rgba(255,255,255,0.48);
       margin-bottom: 0.45rem;
       font-weight: 400;
     }
 
     /* FORM FIELDS
-       background: field fill opacity
-         more visible: rgba(255,255,255,0.14)
-         less visible: rgba(255,255,255,0.04)                            */
+       background: rgba(255,255,255,X) — raise X for more visible fill  */
     .form-group input,
     .form-group textarea {
-      background: rgba(255,255,255,0.08); /* <- field fill — adjust here */
+      background: rgba(255,255,255,0.08); /* <- field fill opacity       */
       border: 1px solid rgba(255,255,255,0.22);
       border-radius: 8px;
       padding: 0.65rem 0.9rem;
@@ -247,36 +221,27 @@
       width: 100%;
     }
 
-    .form-group input:hover,
-    .form-group textarea:hover {
+    .form-group input:hover, .form-group textarea:hover {
       border-color: rgba(255,255,255,0.38);
       background: rgba(255,255,255,0.11);
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group input:focus, .form-group textarea:focus {
       outline: none;
       border-color: rgba(255,255,255,0.55);
       background: rgba(255,255,255,0.13);
       box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
     }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-      line-height: 1.8;
-    }
+    .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.8; }
 
-    /* SEND BUTTON
-       background: adjust opacity for more/less visible fill
-         more solid: rgba(255,255,255,0.22)
-         more subtle: rgba(255,255,255,0.08)                             */
+    /* SEND BUTTON                                                        */
     button[type="submit"] {
       width: 100%;
       cursor: pointer;
       margin-top: 1.4rem;
       padding: 0.72rem 1rem;
-      background: rgba(255,255,255,0.14); /* <- button fill — adjust here */
+      background: rgba(255,255,255,0.14); /* <- button fill opacity      */
       border: 1px solid rgba(255,255,255,0.28);
       border-radius: 8px;
       color: rgba(255,255,255,0.85);
@@ -302,16 +267,9 @@
       min-height: 1.2em;
     }
 
-    /* RIGHT COLUMN                                                       */
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-    }
+    .contact-info { display: flex; flex-direction: column; }
 
-    /* PANEL IMAGE
-       BRIGHTNESS: filter: brightness(X) — sharpness fully preserved
-         1.0 = original, 0.7 = slightly darker, 0.5 = dark
-       CROP: change object-position e.g. 'top center', '30% 60%'        */
+    /* PANEL IMAGE                                                        */
     .contact-image {
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.22);
@@ -322,14 +280,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;   /* <- reframe panel crop here */
+      object-position: center center;
       display: block;
-      filter: brightness(0.65);         /* <- 1.0=original 0.7=darker 0.5=dark */
+      filter: brightness(0.65);     /* <- 1.0=original 0.7=darker 0.5=dark */
     }
 
-    /* SOCIAL ICONS — centered below layout
-       padding: controls gap between icons and bottom of page
-       size: width/height on .social-icon                                */
+    /* SOCIAL ICONS                                                       */
     .page-social {
       width: 100%;
       max-width: 900px;
@@ -340,7 +296,7 @@
     }
 
     .social-icon {
-      width: 46px;                      /* <- icon size — adjust here */
+      width: 46px;
       height: 46px;
       border-radius: 12px;
       display: inline-flex;
@@ -351,32 +307,18 @@
       transition: transform 0.15s, opacity 0.2s;
     }
 
-    .social-icon:hover {
-      transform: translateY(-2px);
-      opacity: 0.85;
-    }
-
-    .social-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: #fff;
-    }
+    .social-icon:hover { transform: translateY(-2px); opacity: 0.85; }
+    .social-icon svg { width: 22px; height: 22px; fill: #fff; }
 
     .social-icon.instagram {
       background: radial-gradient(circle at 30% 110%,
         #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
     }
 
-    .social-icon.facebook {
-      background: #1877f2;
-    }
+    .social-icon.facebook { background: #1877f2; }
 
-    /* MOBILE                                                             */
     @media (max-width: 760px) {
-      .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+      .contact-container { grid-template-columns: 1fr; gap: 2rem; }
       .contact-image { display: none; }
       .contact-page { padding: 7rem 1.2rem 2rem; }
     }
@@ -385,7 +327,6 @@
 </head>
 <body>
 
-  <!-- TRANSPARENT HEADER -->
   <header>
     <div class="header-content">
       <h1 class="logo-with-line">
@@ -416,7 +357,6 @@
   <main class="contact-page">
     <div class="contact-container" id="contactContainer">
 
-      <!-- LEFT COLUMN: form -->
       <section class="contact-form-section">
         <h3>Send a Message</h3>
         <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkoqgzdo" method="POST">
@@ -447,16 +387,14 @@
         </form>
       </section>
 
-      <!-- RIGHT COLUMN: image panel -->
       <aside class="contact-info" id="contactInfo">
         <div class="contact-image" id="contactImage">
-          <img src="2017.jpg" alt="" aria-hidden="true" /> <!-- <- panel image filename -->
+          <img src="2017.jpg" alt="" aria-hidden="true" />
         </div>
       </aside>
 
     </div>
 
-    <!-- Social icons: centered below layout -->
     <div class="page-social" aria-label="Social links">
       <a class="social-icon instagram" href="https://www.instagram.com/macronovo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm10.0 1.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
@@ -468,7 +406,6 @@
 
   </main>
 
-  <!-- Navigation script — handles hamburger menu open/close -->
   <script src="../navigation.js"></script>
 
   <script>
@@ -495,9 +432,6 @@
       }
     });
 
-    /* IMAGE PANEL ALIGNMENT
-       Top aligns with Name field. Bottom aligns with Send button.
-       Recalculates on resize.                                           */
     function alignImagePanel() {
       if (window.innerWidth <= 760) return;
       const container  = document.getElementById("contactContainer");
